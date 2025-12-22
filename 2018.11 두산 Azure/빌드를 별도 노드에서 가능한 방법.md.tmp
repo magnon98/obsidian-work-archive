@@ -1,0 +1,19 @@
+빌드를 별도 노드에서 가능한 방법
+ 
+1. bc 에 nodeSelector 설정
+2. masterConfig.yaml 에서
+
+```
+admissionConfig.pluginConfig.BuildDefaults.configuration.nodeSelector 또는  
+admissionConfig.pluginConfig.BuildOverride.configuration.nodeSelector 에 nodeSelector 설정
+```
+  
+```
+문제  
+cluster-wide 또는 project 위로 nodeSelector 가 걸려 있으면 이 nodeSelector 와 masterConfig.yaml 파일에 지정된 nodeSelector 가 AND 조건으로 적용됨.  
+따라서 hostname 기반의 지정은 불가능.
+```
+ 
+```
+delployment 및 
+```

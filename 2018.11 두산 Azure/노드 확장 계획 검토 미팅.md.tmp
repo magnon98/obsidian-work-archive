@@ -1,0 +1,60 @@
+gps 7일 남음
+ 
+라우터 노드도 분리하려다 말았음. 나중에 다시 진행 예정
+   
+
+DNS가 필요한가.  
+--\> 일반적으로 운영 환경에서 DNS 서버 구축을 권고  
+--\> hosts 파일만으로도 충분하지 않나?  
+--\> DNS 서버가 장애 발생했을 때 문제?  
+--\> 관리 포인트도 늘어남.  
+--\> 노드가 늘어나면 관리 문제  
+ 
+설치시 Azure 쪽 문제가 있어서 hosts 에 등록해서 진행했음.
+ 
+bastion 에서 ansible 실행시 ssh-key 사용할 수 있도록
+   
+
+LV에 free 영역을 두는데 필요시 자동확장? 수동 확장?
+ 
+yum update 할 때 7.6.xx 로 맞출 수 있나?
+   
+
+4번 노드는 다운타임을 잡고 진행.
+ 
+4번 노드에 있던 POD 목록들을 사전에 확보, 나중에 확인
+         
+
+개발노드는 별도의 네이밍으로 구분
+ 
+개발 노드에 배포되도록 하는 방법  
+프로젝트에 노드 레이블 거는 법  
+~~dc~~ ~~등에~~ ~~node selector~~ ~~사용~~  
+개발 리소스 리밋은 POD 별 limit 대신 project 당 quota 로…
+ 
+3
+   
+
+지난 번에 hostname 형태가 다른 이슈, RHEL 버전 다른 이슈 때문에….
+ 
+주말 또는 야간 작업… 스케줄 확인 필요?  
+주말은 x 2, 야간도 x 2
+    
+다음 주 화 ~ 금 중 하루… 금요일?
+ 
+작업 공지는 DDP에서
+ 
+quota, limit range, limit
+    
+limit range, limit 의 상관관계  
+min / max 지정시 미만, 초과로 limit을 지정하는 경우 어떤 우선순위가 있는지,
+   
+
+3번 노드 삭제하는 절차. 레드햇에 문의
+
+- [https://docs.openshift.com/container-platform/3.6/admin_guide/manage_nodes.html#deleting-nodes](https://docs.openshift.com/container-platform/3.6/admin_guide/manage_nodes.html#deleting-nodes)
+- [https://docs.openshift.com/container-platform/3.6/admin_guide/manage_nodes.html#evacuating-pods-on-nodes](https://docs.openshift.com/container-platform/3.6/admin_guide/manage_nodes.html#evacuating-pods-on-nodes)
+-   
+    
+ 
+OCP 백업

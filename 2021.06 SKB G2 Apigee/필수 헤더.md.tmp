@@ -1,0 +1,72 @@
+```
+Content Type
+```
+
+- ```
+    Client_ID (stb_id)
+    ```
+    
+    - ```
+        Mac Address를 조회하는데 사용됨
+        ```
+        
+        ```
+        캐시 ( or 내부 DB) --\> 통합 DB (CDC DB)
+        ```
+        
+    
+    ```
+    실제로는 MAC 을 기준으로 stbid 가 발급됨
+    ```
+    
+
+```
+Client_IP
+```
+
+```
+Timestamp
+```
+
+- ```
+    Auth_Val
+    ```
+    
+    ```
+    sha256 Hash (stb_id + mac + trust?)
+    ```
+    
+    ```
+    gateway 에서 stb_id 에 매핑해서 저장
+    ```
+    
+    ```
+    처음엔 빈 값 --\> 생성
+    ```
+    
+- ```
+    API_Key
+    ```
+    
+    ```
+    DEV:  l7xx4fa00822f3b34d04baa103b3a80d466b 
+    ```
+    
+    ```
+    STG:  l7xx159a8ca72966400b886a93895ec9e2e3
+    ```
+    
+    ```
+    PRD:  l7xx851d12cc66dc4d2e86a461fb5a530f4a
+    ```
+    
+    ```
+    MyTV: l7xx6e7b667188364c329cac10f97e38a238
+    ```
+    
+      
+    
+
+```
+Trace
+```

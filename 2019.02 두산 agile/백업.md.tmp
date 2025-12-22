@@ -1,0 +1,8 @@
+```
+oc exec -it jira-6-t8zjj -- base64 /var/atlassian/jira/export/2019-Apr-09--0800.zip | tr -d '\r' | base64 -d - \> jira_backup_20190409.zip  
+oc exec -it jira-6-t8zjj -- /bin/bash -c 'tar cf - /var/atlassian/jira/data/attachments | base64' | tail -n +2 | tr -d '\r' | base64 -d \> jira_attachments_backup_20190409.tar
+```
+ 
+```
+oc exec -it confluence-4-x5cd2 -- base64 ./backups/backup-2019_04_08.zip | tr -d '\r' | base64 -d - \> confluence_backup_20190408.zip
+```

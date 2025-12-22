@@ -1,0 +1,24 @@
+단암빌딩
+ 
+내일은 핀포인트만.
+ 
+운영계 설치중. 다른 파트는 모두 설치 완료됨.
+ 
+Performance test??
+ 
+Xpg (??? Program guide)
+ 
+1500 tps 목표
+ 
+설치 후 오버헤드 얼마나 되는지.  
+조치에 대한 상주 대응반 필요.
+ 
+Hbase, collector, web ui 모두 서비스화
+    
+JAVA_OPTS vs JVM_ARGS
+   
+
+whatap.io
+ 
+Pinpoint 1.6.2  
+Hbase

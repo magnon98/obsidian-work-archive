@@ -1,0 +1,111 @@
+```
+테스트 구성도 작성
+```
+
+```
+스펙 / IP 도 포함되어야 겠지?
+```
+ 
+```
+부하테스트용 상세 시나리오 작성
+```
+   
+
+```
+더미 H/E 구성  
+wget [https://openresty.org/package/centos/openresty.repo](https://openresty.org/package/centos/openresty.repo)  
+yum install -y openresty
+```
+ 
+```
+systemctl start openresty  
+systemctl enable openresty
+```
+ 
+```
+mkdir /usr/local/openresty/nginx/conf.d  
+vi /usr/local/openresty/nginx/conf.d/dummy.confc
+```
+   
+
+```
+        location /dummy0 {  
+            echo_exec /dummy/index.html;  
+        }
+```
+ 
+```
+        location /dummy1 {  
+            echo_sleep 0.1;  
+            echo_exec /dummy/index.html;  
+        }
+```
+ 
+```
+        location /dummy2 {  
+            echo_sleep 0.2;  
+            echo_exec /dummy/index.html;  
+        }
+```
+ 
+```
+        location /dummy3 {  
+            echo_sleep 0.3;  
+            echo_exec /dummy/index.html;  
+        }
+```
+ 
+```
+        location /dummy4 {  
+            echo_sleep 0.4;  
+            echo_exec /dummy/index.html;  
+        }
+```
+ 
+```
+        location /dummy5 {  
+            echo_sleep 0.5;  
+            echo_exec /dummy/index.html;  
+        }
+```
+ 
+```
+        location /dummy6 {  
+            echo_sleep 0.6;  
+            echo_exec /dummy/index.html;  
+        }
+```
+ 
+```
+        location /dummy7 {  
+            echo_sleep 0.7;  
+            echo_exec /dummy/index.html;  
+        }
+```
+ 
+```
+        location /dummy8 {  
+            echo_sleep 0.8;  
+            echo_exec /dummy/index.html;  
+        }
+```
+ 
+```
+        location /dummy9 {  
+            echo_sleep 0.9;  
+            echo_exec /dummy/index.html;  
+        }
+```
+ 
+```
+        location /dummy10 {  
+            echo_sleep 1;  
+            echo_exec /dummy/index.html;  
+        }
+```
+      
+
+```
+부하테스트용 API 생성  
+- 템플릿은 어떤 것?
+```

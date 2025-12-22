@@ -1,0 +1,14 @@
+|   |   |   |   |   |
+|---|---|---|---|---|
+|[www.github.com](http://www.github.com)|웹|magnon-bliex|기본+g|개인별 계정. 퍼블리셔는 없음.|
+|[www.tizen.org](http://www.tizen.org)|웹|bliex|qmfflrtm!@#|공용 계정|
+|[www.tizen.dev](http://www.tizen.dev)|웹|bliex|qmfflrtm!@#|공용 계정|
+
+|   |   |   |   |   |   |   |
+|---|---|---|---|---|---|---|
+|종류|IP|Connection Type|Port|ID|PW||
+|개발서버|203.231.200.29|SSH|-|bliex|qmfflrtm||
+|개발서버|203.231.200.29|SSH|-|root|p0ssw@rd||
+|개발서버|203.231.200.29|MySQL|3306|root|비번없음||
+|-|||||||
+|메일 발송용 계정|-|-||bliextizen@gmail.com|Qmfflrtm||

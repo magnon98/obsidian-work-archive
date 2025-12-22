@@ -1,0 +1,305 @@
+# check_vm.sh
+
+```
+#!/bin/bash
+```
+   
+
+```
+function hr() {  
+    HR="==========================================================================="  
+    if [[ $1 != "" ]]; then  
+    echo -e "\n\n\n$HR"  
+        echo "| $1"  
+    fi  
+    echo "$HR"  
+}
+```
+ 
+```
+function printout() {  
+    if [[ $2 == *$'\n'* ]]; then  
+        echo "$1"  
+        echo "$2"  
+        echo  
+    else  
+        printf "%-20s%s\n" "$1" "$2"  
+    fi
+```
+ 
+```
+    echo '---------------------------------------------------------------------------'  
+}
+```
+   
+
+```
+#==========================================================================
+```
+ 
+```
+hr "OS & Kernel"
+```
+   
+
+```
+RHEL_VERSION=$(cat /etc/redhat-release)  
+printout RHEL_VERSION "$RHEL_VERSION"
+```
+    
+```
+KERNEL_VERSION=$(uname -r)  
+printout KERNEL_VERSION "$KERNEL_VERSION"
+```
+    
+```
+UPTIME=$(uptime | sed -Ee 's/.+up (([0-9:]+[ a-z]*)+), .+/\1/')  
+printout UPTIME "$UPTIME"
+```
+    
+```
+hr "CPU"
+```
+   
+
+```
+CPU_NUM_CORE=$(cat /proc/cpuinfo | grep processor | wc -l)  
+printout CPU_NUM_CORE "$CPU_NUM_CORE"  
+CPU_UTILIZATION=$(sar 5 10 | grep Average | awk '{print 100 - $8}')  
+printout CPU_UTILIZATION "$CPU_UTILIZATION"
+```
+      
+
+```
+hr "Memory"
+```
+   
+
+```
+MEM_INFO=$(free -m | grep Mem)
+```
+ 
+```
+MEM_TOTAL=$(echo $MEM_INFO | awk '{print $2/1024 " GB"}')  
+printout MEM_TOTAL "$MEM_TOTAL"
+```
+ 
+```
+MEM_USED=$(echo $MEM_INFO | awk '{print $3/1024 " GB"}')  
+printout MEM_USED "$MEM_USED"
+```
+ 
+```
+MEM_FREE=$(echo $MEM_INFO | awk '{print $4/1024 " GB"}')  
+printout MEM_FREE "$MEM_FREE"
+```
+ 
+```
+MEM_AVAILABLE=$(echo $MEM_INFO | awk '{print $7/1024 " MB"}')  
+printout MEM_AVAILABLE "$MEM_AVAILABLE"
+```
+    
+```
+hr "Journal errors"  
+journalctl -p3 | grep ''
+```
+
+# check_ocp.sh
+
+```
+#!/bin/bash
+```
+ 
+```
+echo "==========================================================================="  
+echo "| OCP"  
+echo "==========================================================================="
+```
+   
+
+```
+echo  
+echo "NODE_LIST"  
+echo '---------------------------------------------------------------------------'  
+oc get node -o wide
+```
+    
+```
+echo  
+echo "NODE_LIST"  
+echo '---------------------------------------------------------------------------'  
+NODE_NAMES=$(oc get node --no-headers | awk '{print $1}')  
+for NODE_NAME in $NODE_NAMES; do  
+    echo "Node Event - $NODE_NAME"  
+    oc describe node $NODE_NAME | grep -A999 'Events:'  
+    echo  
+done
+```
+    
+```
+echo  
+echo "CLUSTER_STATUS"  
+echo '---------------------------------------------------------------------------'  
+oc status --all-namespaces --suggest
+```
+      
+
+```
+echo  
+echo "CLUSTER_EVENT"  
+echo '---------------------------------------------------------------------------'  
+oc get event --all-namespaces
+```
+    
+```
+echo  
+echo "ETCD_STATUS"  
+echo '---------------------------------------------------------------------------'
+```
+ 
+```
+oc -n kube-system rsh master-etcd-master01.ocp.bliex.io /bin/bash -c 'ETCDCTL_API=3 etcdctl --cert=/etc/etcd/peer.crt --key=/etc/etcd/peer.key --cacert=/etc/etcd/ca.crt --endpoints="https://master01.ocp.bliex.io:2379,https://master02.ocp.bliex.io:2379,https://master03.ocp.bliex.io:2379" endpoint health'
+```
+      
+
+```
+echo  
+echo "BUILD_CONFIG"  
+echo '---------------------------------------------------------------------------'  
+oc get bc --all-namespaces
+```
+    
+```
+echo  
+echo "DEPLOYMENT_CONFIG"  
+echo '---------------------------------------------------------------------------'  
+oc get dc --all-namespaces
+```
+    
+```
+echo  
+echo "DAEMONSETS"  
+echo '---------------------------------------------------------------------------'  
+oc get ds --all-namespaces
+```
+    
+```
+echo  
+echo "STATEFULSETS"  
+echo '---------------------------------------------------------------------------'  
+oc get sts --all-namespaces
+```
+    
+```
+echo  
+echo "SERVICES"  
+echo '---------------------------------------------------------------------------'  
+oc get svc --all-namespaces
+```
+    
+```
+echo  
+echo "ROUTES"  
+echo '---------------------------------------------------------------------------'  
+oc get route --all-namespaces
+```
+   
+
+```
+echo  
+echo "DIAGNOSTICS"  
+echo '---------------------------------------------------------------------------'  
+oc adm diagnostics
+```
+
+# check_3scale.sh
+
+```
+#!/bin/bash
+```
+ 
+```
+function printout() {  
+    if [[ $2 == *$'\n'* ]]; then  
+        echo "$1"  
+        echo "$2"  
+        echo  
+    else  
+        printf "%-25s%s\n" "$1" "$2"  
+    fi
+```
+ 
+```
+    echo '---------------------------------------------------------------------------'  
+}
+```
+   
+
+```
+#==========================================================================
+```
+   
+
+```
+PROJ=apim29
+```
+   
+
+```
+THREESCALE_VERSION=$(oc -n $PROJ rsh -c system-master dc/system-app /bin/bash -c "env | grep AMP_RELEASE")  
+printout THREESCALE_VERSION "$THREESCALE_VERSION"
+```
+    
+```
+POD_LIST=$(oc -n $PROJ get pod)  
+printout POD_LIST "$POD_LIST"
+```
+    
+```
+APICAST_STG_HEALTH=$(oc -n $PROJ rsh dc/apicast-staging /bin/bash -c 'curl -s localhost:8080/_threescale/healthz -w "%{http_code}\n"')  
+printout APICAST_STG_HEALTH "$APICAST_STG_HEALTH"
+```
+    
+```
+APICAST_PROD_HEALTH=$(oc -n $PROJ rsh dc/apicast-production /bin/bash -c 'curl -s localhost:8080/_threescale/healthz -w "%{http_code}\n"')  
+printout APICAST_PROD_HEALTH "$APICAST_PROD_HEALTH"
+```
+    
+```
+BACKEND_LISTENER_HEALTH=$(curl -s $(oc -n $PROJ get route backend -o jsonpath="{.spec.host}")/check.txt)  
+printout BACKEND_LISTENER_HEALTH "$BACKEND_LISTENER_HEALTH"
+```
+    
+```
+BACKEND_REDIS_HEALTH=$(oc -n $PROJ rsh dc/backend-redis /bin/bash -c '/opt/rh/rh-redis32/root/usr/bin/redis-cli ping') printout BACKEND_REDIS_HEALTH "$BACKEND_REDIS_HEALTH"
+```
+    
+```
+SYSTEM_MASTER_HEALTH=$(curl -s -k [https://$(oc](https://$\(oc) -n $PROJ get route -o jsonpath="{.items[?(@.spec.to.name==\"system-master\")].spec.host}")/check.txt)  
+printout SYSTEM_MASTER_HEALTH "$SYSTEM_MASTER_HEALTH"
+```
+    
+```
+SYSTEM_PROVIDER_HEALTH=$(for url in $(oc -n $PROJ get route -o jsonpath="{.items[?(@.spec.to.name==\"system-provider\")].spec.host}"); do printf "%-40s %s\n" "$url" $(curl -sk [https://$url/check.txt](https://$url/check.txt)); done)  
+printout SYSTEM_PROVIDER_HEALTH "$SYSTEM_PROVIDER_HEALTH"
+```
+    
+```
+SYSTEM_DEVELOPER_HEALTH=$(for url in $(oc -n $PROJ get route -o jsonpath="{.items[?(@.spec.to.name==\"system-developer\")].spec.host}"); do printf "%-40s %s\n" "$url" $(curl -sk [https://$url/check.txt](https://$url/check.txt)); done)  
+printout SYSTEM_DEVELOPER_HEALTH "$SYSTEM_DEVELOPER_HEALTH"
+```
+    
+```
+SYSTEM_MYSQL_HEALTH=$(oc -n $PROJ rsh dc/system-mysql /bin/bash -c ' echo "status" | /opt/rh/rh-mysql57/root/usr/bin/mysql -u root')  
+printout SYSTEM_MYSQL_HEALTH "$SYSTEM_MYSQL_HEALTH"
+```
+    
+```
+SYSTEM_REDIS_HEALTH=$(oc -n $PROJ rsh dc/system-redis /bin/bash -c '/opt/rh/rh-redis32/root/usr/bin/redis-cli ping')  
+printout SYSTEM_REDIS_HEALTH "$SYSTEM_REDIS_HEALTH"
+```
+    
+```
+ZYNC_HEALTH=$(oc -n $PROJ rsh dc/zync /bin/bash -c 'curl -s localhost:8080/status/live')  
+printout ZYNC_HEALTH "$ZYNC_HEALTH"
+```

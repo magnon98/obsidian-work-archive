@@ -1,0 +1,15 @@
+```
+1. APIgee Edge가 노출하는 API의 도메인네임  
+  [api.lgstation.com](http://api.lgstation.com/)  
+  ※ 사용예) OO서비스 OOAPI의 base path URL : [https://api.lgstation.com/ecms/](https://api.lgstation.com/ecms/)
+```
+ 
+```
+2. APIgee Edge UI 도메인네임  
+  [apigee.lgstation.com](http://apigee.lgstation.com/)
+```
+ 
+```
+3. Developer Portal 도메인네임  
+  [apidp.lgstation.com](http://apidp.lgstation.com/)
+```

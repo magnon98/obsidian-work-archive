@@ -1,0 +1,86 @@
+```
+테스트용 API는 별도로 생성해서 사용하는지,  
+--\> Y
+```
+ 
+```
+백엔드는 더미만 사용? STG H/E도 사용?   
+--\> STG는 더미만 사용  
+--\> PRD 는 실제 H/E
+```
+ 
+```
+더미 백엔드로 만들어야 할 것들의 목록. (성능 / 기능)  
+--\> 
+```
+   
+
+```
+path variable 정상 동작 확인 - EPS 및 mpush , WEBUI 호출을 통해 path variable 정상동작 확인  
+Apigee는 기본값이 활성화이므로 비활성화된 API를 테스트해 보아야…  
+아니면 활성화된 것, 비활성화된 것 두가지 모두?
+```
+ 
+```
+Group Test 정상 동작 확인 - XPG Template 의 Client_ID 별 routing 정상동작 확인  
+XPG 템플릿 사용시 TargetEndpoint 수준에서 분기 가능  
+백엔드는 어떤 걸 쓸 수 있나?   
+dummy + 기존 H/E
+```
+ 
+```
+Dynamic Routing 정상 동작 확인 - Next PaaS Template의 dynamic Routing(비율별 routing이 정상 동작하는 것 확인)  
+LoadBalancing 에 Weight 설정 필요  
+모든 템플릿에서 가능  
+백엔드는 어떤 것 사용?  
+dummy + 기존 H/E
+```
+   
+
+```
+내부DB 정상 Token값 기입여부 - getToken 호출시 정상적인 Token값이 기입여부  
+내부DB에 없고 PubDB에만 있는 Client_ID 확인 후 getToken 호출  
+내부 DB 조회해서 토큰 값 저장 여부 확인  
+Read Replica 쪽도 확인  
+getToken의 응답값과 DB 조회한 값 비교
+```
+   
+
+```
+IDPS token 검증 - IDPS token 유효성 확인  
+임의의 API 에서 Trace 헤더에 TOKENIDPS 키워드 추가하고 테스트  
+ELK 에서 Trace header 확인 가능 (최팀장에게 접속정보 확인)  
+JWT 토큰은 임의로 생성 - exp 만 체크하고 있는데 추가로 체크할 claim이 있는지?
+```
+   
+
+```
+Load Balancing - RMP간 쏠림 없이 동작하는지 Load Balncing 여부 확인  
+nGrinder 에서 적정부하로 호출 후 MP 노드 별 호출 수를 ELK 에서 확인?
+```
+   
+
+```
+global parameter 정상 동작 여부 - global parameter 변경을 통해 , 절체 및 정상적인 값 설정 가능 여부 확인  
+Gateway KVM의 entry 를 수정해서 테스트 (ex. 국사전환)  
+--\> DEV 에 테스트용으로 더미 API 만들어서 국사전환.
+```
+ 
+```
+--\> 각 항목을 끊어서 작성
+```
+    
+```
+정상적인 PUBDB호출 여부 - getToken 호출시 정상적인 PUBDB호출 여부 (PUBDB session 확인)  
+getToken 호출할 때 PubDB 에 세션 생성 여부를 확인?   
+왜 하는지… connection pool 사용하지 않고 있음..  
+connection pool 사용하려면 관련 기능을 apigee 외부로 빼야 함.  
+내부DB에 값이 없을 때 pubdb에서 잘 가져오는지 확인하기 위한 용도  
+--\> pubdb 세션 확인  
+--\> 내부 DB에 저장된 값도 확인
+```
+    
+```
+rate limit / quota는 테스트 안해도 되나?  
+...
+```

@@ -1,0 +1,51 @@
+```
+VPN  
+vpn.hanafostv.com:8443  
+skb3105_08 // ~~~123$
+```
+   
+
+```
+ngrinder  
+[http://1.255.86.196:8080](http://1.255.86.196:8080)  
+ID: admin  
+PW: admin
+```
+    
+```
+bastion  
+IP 1.255.47.121  
+Port 8000  
+User agwdev  
+Passwd agwdc1!
+```
+   
+
+```
+VM  
+10.10.214.211 doj-agw-dc1-01 root // agwdc1!  
+10.10.214.212 doj-agw-dc1-02 root // agwdc1!  
+10.10.214.213 doj-agw-dc2-01 root // agwdc1!  
+10.10.214.214 doj-agw-dc2-02 root // agwdc1!
+```
+    
+```
+test용 도메인  
+agw-poc.sk-iptv.com
+```
+    
+```
+LB IP :  
+175.113.150.80  
+175.113.150.81
+```
+   
+
+```
+[http://agw-poc.sk-iptv.com:9000](http://agw-poc.sk-iptv.com:9000)
+```
+   
+
+```
+agwpoc@sk.com // Agwpoc1!
+```

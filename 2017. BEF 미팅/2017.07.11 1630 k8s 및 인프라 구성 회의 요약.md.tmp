@@ -1,0 +1,18 @@
+2017.07.11 16:30 k8s 및 인프라 구성 회의 요약  
+worker node만 baremetal, 나머지는 VM (master 노드 포함)  
+production은 무시.  
+admin-front 이중화 필요 없음  
+    --\> 아래의 VM을 모두 sandbox master 로 전환  
+        - CM-sandbox  
+        - CM-production-01  
+        - admin-front-02  
+    --\> production용 worker node 일부(또는 모두)를 sandbox용으로 전용  
+nginx의 reverse proxy는 실시간 reload시 과도하게 reload할 가능성 있어, 요청을 queue에 쌓아두고 1 ~ 10분의 적절한 간격으로 reload하는 준실시간 방식 고려 (다른 좋은 방법 있으면 제안)  
+이곳 IDC 특성상 서버가 내부망에 있는 경우 proxy / gateway 등 outbound 제공할 수 있는 방법이 전무하기 때문에, 외부와 통신이 필요한 서버는 공인 IP를 가질 수 있도록 외부망에 두어야 함.  
+master와 worker간 subnet 달라서 문제 발생시 master 노드들을 공인망으로 올려도 문제되지 않을 듯.  
+docker registry 와 npm repository는 선호하는 것으로 구성해도 관계 없음. (nexus 안써도 됨)
+ 
+인프라 v1  
+    [https://tde.sktelecom.com/wiki/pages/viewpage.action?pageId=110429342](https://tde.sktelecom.com/wiki/pages/viewpage.action?pageId=110429342)  
+인프라 v2  
+    [https://tde.sktelecom.com/wiki/pages/viewpage.action?pageId=117870435](https://tde.sktelecom.com/wiki/pages/viewpage.action?pageId=117870435)

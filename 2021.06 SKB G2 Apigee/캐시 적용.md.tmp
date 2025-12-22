@@ -1,0 +1,35 @@
+```
+\<?xml version="1.0" encoding="UTF-8" standalone="yes"?\>  
+\<ResponseCache async="false" continueOnError="false" enabled="true" name="Response-Cache-1"\>  
+    \<DisplayName\>Response Cache-1\</DisplayName\>  
+    \<Properties/\>  
+    \<!-- 캐시 데이터의 구분을 위한  cachekey --\>  
+    \<CacheKey\>  
+        \<!-- cachekey의 prefix --\>  
+        \<Prefix/\>  
+        \<!-- cachekey를 구성할 queryparam 또는 header --\>  
+        \<KeyFragment ref="request.queryparam.stbServiceId" type="string"/\>  
+        \<KeyFragment ref="request.queryparam.segIds" type="string"/\>  
+        \<KeyFragment ref="request.queryparam.appTypCd" type="string"/\>  
+        \<KeyFragment ref="request.queryparam.inspectYn" type="string"/\>  
+        \<!-- \<KeyFragment ref="request.header.foo" type="string"/\> --\>  
+    \</CacheKey\>  
+    \<!-- Prefix가 지정되지 않은 경우, cachekey의 prefix 로 사용할 scope --\>  
+    \<Scope\>Exclusive\</Scope\>  
+    \<!-- 캐시 만료 시점 --\>  
+    \<ExpirySettings\>  
+        \<!-- mm-dd-yyyy 형태. 절대값. TimeoutInSeconds 가 지정된 경우 무시됨 --\>  
+        \<ExpiryDate/\>  
+        \<!-- hh:mm:ss 형태. 절대값. TimeoutInSeconds 가 지정된 경우 무시됨 --\>  
+        \<TimeOfDay/\>  
+        \<!-- 캐시 생성 후 만료되기까지의 시간. 상대값. --\>  
+        \<TimeoutInSeconds ref=""\>10\</TimeoutInSeconds\>  
+    \</ExpirySettings\>  
+      
+    \<!-- 캐시를 조회하지 않을 조건 --\>  
+    \<SkipCacheLookup\>request.header.bypass-cache = "true"\</SkipCacheLookup\>  
+      
+    \<!-- 캐시를 저장하지 않을 조건 --\>  
+    \<SkipCachePopulation\>request.header.bypass-cache = "true"\</SkipCachePopulation\>  
+\</ResponseCache\>
+```

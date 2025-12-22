@@ -1,0 +1,17 @@
+MySQL (Maria DB)
+
+- root // qmfflrtm
+- drupal // emfnvkf
+
+Drush 설치
+ 
+$ curl -sS [https://getcomposer.org/installer](https://getcomposer.org/installer) | php￼$ mv composer.phar /usr/local/bin/composer  
+$ composer install
+ 
+$ wget [https://github.com/drush-ops/drush/archive/master.zip](https://github.com/drush-ops/drush/archive/master.zip)  
+$ unzip master.zip  
+$ rm -f master.zip  
+$ mv ./drush-master /usr/local/share/drush  
+$ ln -s /usr/local/share/drush/drush /usr/local/bin/drush
+ 
+$ drush

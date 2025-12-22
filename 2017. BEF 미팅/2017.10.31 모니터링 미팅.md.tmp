@@ -1,0 +1,2 @@
+차트 라이브러리를 사용할거면 grafana 일반사용자용도 그냥 차트 라이브러리로 보여주는게 낫지 않나?  
+어차피 datasource는 grafana의 dashboard에 있으니 UI만 신경쓰면 될거 같은데

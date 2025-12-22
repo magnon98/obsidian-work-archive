@@ -1,0 +1,28 @@
+- DB 결정 필요
+    - MySQL pod + PVC
+    - Azure SQL - 도커 이미지
+    - Confluence 는 Atlassian에서 배포하는 도커 이미지가 있으나
+    - JIRA, Crowd 는 없어서 생성중.
+        - JDK는 Oracle JDK 사용 가능한지?
+        - 안되면 JIRA 가 공식 지원하는 AdoptOpenJDK 를 기반으로 - PVC
+    - 첨부파일 용도로 1개씩 각 3개가 필요
+    - 첨부파일 외에 파일로 저장되는 것들이 발견된다면 추가 요청할 수도 있음.
+    - 사이징은 예측할 수 있는 근거 자료가 없어 불가능 - scaleable 여부는 테스트 필요.
+    - 가능하다면 HPA 적용
+    - 불가능한 경우 StatefulSet 적용해서 replica 개수 고정 - cpu memory 설정은
+    - JIRA, Confluence
+        - request
+            - CPU: 0.5
+            - RAM: 2.5Gi
+        - limit
+            - CPU: 1
+            - RAM: 2.5 Gi
+    - Crowd
+        - request
+            - CPU: 0.5
+            - RAM: 1.5 Gi
+        - limit
+            - CPU: 1
+            - RAM: 1.5 Gi
+          
+         - 백업 정책은?

@@ -1,0 +1,75 @@
+```
+- edge ui 로그인  
+admin@apigee.poc // Qmfflrtm123$
+```
+ 
+```
+- dashboard
+```
+ 
+```
+- organization, environment
+```
+ 
+```
+- api proxy 생성  
+- reverse proxy  
+- proxy name: jarvis-proxy03  
+- base path: /jarvis-proxy03  
+- existing API: [http://api-platform-test-jarvis.d2.ebaykorea.com](http://api-platform-test-jarvis.d2.ebaykorea.com)
+```
+ 
+```
+- authorization: Pass through  
+- add CORS headers
+```
+ 
+```
+- deploy 상태 확인 후 undeploy -\> deploy
+```
+   
+
+```
+- product 생성  
+- name: Jarvis Product  
+- env: prod & test  
+- access: Public  
+- Key Approval Type: manual  
+- Resources  
+- API Proxy: jarvis-proxy01  
+- Revision: ...  
+- Resource Path: /  
+- [https://docs.apigee.com/api-platform/publish/create-api-products#behavior-resource-path](https://docs.apigee.com/api-platform/publish/create-api-products#behavior-resource-path)
+```
+    
+```
+- developer portal 로그인  
+- dpadmin // Qmfflrtm123$
+```
+ 
+```
+- My Apps (or Building with access to a key)
+```
+ 
+```
+- Add App  
+- App Name: Jarvis App  
+- Callback URL: (empty)  
+- Product: Jarvis Product
+```
+   
+
+```
+- Approve App
+```
+   
+
+```
+- postman test  
+- URL: [http://172.30.5.xx:xxxxx/jarvis-proxy01/service/match](http://172.30.5.xx:xxxxx/jarvis-proxy01/service/match)  
+- Method: POST  
+- Header  
+Content-Type: application/json  
+- data  
+{"data": {"req001": {"item_name": "루이비통 테스트"},"req002": {"item_name": "루이비통 테스트222"}}}
+```

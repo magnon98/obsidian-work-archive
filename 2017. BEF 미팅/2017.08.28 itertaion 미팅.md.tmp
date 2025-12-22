@@ -1,0 +1,37 @@
+브랜드  
+- **sk**etch  
+사용 서비스 대응 이슈  
+- replication 등  
+      
+사용자 일반 인스턴스  
+1500개 수준으로 제약  
+- 1core 100m  
+- 200mb  
+Jenkins Job  
+- hook url 설정  
+- tomcat starting log 나오도록  
+- war 대신 jar로 다시...?  
+- tomcat restart 에 대한 로그를 job에 출력 가능할지..?  
+- slave jenkins를 두고 war deploy 제어?  
+해커톤 시연 범위 / 시나리오  
+ssl 인증서  
+- 도메인 신청하고 문제 없으면 발급까지 2주  
+스크롤바 커스텀???  
+- os x 스타일...;;
+ 
+smtp  
+- 자체 보유 없음.  
+- 상용 서비스를 구매해서 사용.
+   
+
+어드민 콘솔  
+- 차트로 보여줄 것  
+- healthy status  
+- unheathy instance(s)  
+- # of recently signed up  
+- # of recently created instances  
+- 전체 메일 발송은 대상자 그룹 필터링 기능 필요.  
+- # 개월 내에 로그인한 적 있는 사람.  
+- 메일 수신 동의한 사람.  
+- active 한 app을 몇개 이상 가지고 있는 사람?  
+- 등등...

@@ -1,0 +1,60 @@
+운영장비
+
+- IP 확보
+- VM 준비중
+- 접속자 명단 취합 필요
+- 차주중 받을 수 있을 듯.
+ 
+개발환경 통합 필요.
+ 
+Iot week
+ 
+-   
+    
+- [http://www.iotweek.kr/2017/kor/main.asp](http://www.iotweek.kr/2017/kor/main.asp)
+- 데모 시나리오 위키에 있음.
+    - 디버그 화면 또는 모니터링 보여주는 것 포함되어 있음. 모니터링은 metric + log?
+ 
+내년에 nodered가 아닌 다른 컨테이너 서비스를 제공할 수도 있음.
+   
+
+사용자에게 보여줄 로그
+
+- application log
+- access log
+- error log
+ 
+access / error log 를 nginx에서 처리하는게 맞는지.
+
+- 어떻게 컨테이너 단위로 매핑하지?
+   
+
+도메인은 IP가 나올 다음주 중으로 신청
+ 
+김동문 매니저 다른 부서로 발령
+
+- 업무는 누가?
+
+CHECK!!
+
+- 콘솔과 연동할 k8s 클러스터는 어떤 것?
+- 내부 도커 레지스트리 정보
+- 도메인 부여를 위한 노드레드 reverse proxy 정보
+- Kube 버전은 어떤 걸로? 나중에 업데이트하더라도 fix필요. 현재 1.6.6, 1.7.3은 테스트됨.       
+
+Kibana 멀티 테넌시는 X-Pack 이 오픈소스가 아니라 사용하지 못하는 것으로 확인됨.  
+EFK Stack 혹은 Kibana의 대안으로 사용할 오픈소스가 몇몇 있으나,  
+사용자에게 보여줄 정보가 노드레드 인스턴스에 대한 access / error log라면, grafana의 테이블 레이아웃으로도 처리가 가능.  
+다만 nodered가 request / response에 대한 로그는 발생시키지 않음.
+    
+노드레드 진입시 인증 방법  
+쿠키?  
+헤더로 JWT token전달하면 되지 않나?
+ 
+폰트만 4MB 가까이 되는데 괜찮나?
+ 
+같은 app에 동시 접속 / 수정은 어떻게 처리? Lock?
+       
+노드레드를 통해서 CI 제어하는 것도 가능할거 같은데...
+ 
+Mosca MQTT Broker는 뭐임?

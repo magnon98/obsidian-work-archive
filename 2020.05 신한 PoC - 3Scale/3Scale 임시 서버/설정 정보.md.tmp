@@ -1,0 +1,64 @@
+```
+3Scale Admin Portal  
+    - URL: [https://3scale-admin.amp.shinhan.local](https://3scale-admin.amp.shinhan.local)  
+    - ID: admin  
+    - PW: admin.!
+```
+ 
+```
+3Scale Developer Portal  
+    - URL: [https://3scale.amp.shinhan.local](https://3scale.amp.shinhan.local)  
+    - ID: john  
+    - PW: 123456
+```
+ 
+```
+RH-SSO  
+    - URL: [https://rhsso.apps.shinhan.local](https://rhsso.apps.shinhan.local)  
+    - web console  
+        - ID: admin  
+        - PW: admin.!  
+    - sso user  
+        - ID: demouser  
+        - PW: demouser.!
+```
+ 
+```
+Echo API (user-key)  
+    - [https://api-3scale-apicast-staging.amp.shinhan.local?user_key=cd99944d50b60316266abc2b6d4659be](https://api-3scale-apicast-staging.amp.shinhan.local?user_key=cd99944d50b60316266abc2b6d4659be)  
+    
+```
+ 
+```
+Httpbin (OpenID Connect)  
+    - URL: [https://httpbin-3scale-apicast-staging.amp.shinhan.local](https://httpbin-3scale-apicast-staging.amp.shinhan.local)
+```
+ 
+```
+    - access token URL: [https://rhsso.apps.shinhan.local/auth/realms/apim28/protocol/openid-connect/token](https://rhsso.apps.shinhan.local/auth/realms/apim28/protocol/openid-connect/token)  
+    - grant_type: client_credentials  
+    - client_id: a2755cea  
+    - client_secret: 2698b56b59cfdcf6e85331fa6c02a6e5
+```
+ 
+```
+    ex) curl -X POST '[https://rhsso.apps.shinhan.local/auth/realms/apim28/protocol/openid-connect/token](https://rhsso.apps.shinhan.local/auth/realms/apim28/protocol/openid-connect/token)' \  
+            -d 'grant_type=client_credentials' \  
+            -d 'client_id=a2755cea' \  
+            -d 'client_secret=2698b56b59cfdcf6e85331fa6c02a6e5' | python -m json.tool
+```
+    
+```
+Dynamic URI Example  
+    - URL: [https://dynamic-uri-example-3scale-apicast-staging.amp.shinhan.local/api/customers/{customer_id}?user_key=3eda8b4a71d2336484487e9b23762b0e](https://dynamic-uri-example-3scale-apicast-staging.amp.shinhan.local/api/customers/{customer_id}?user_key=3eda8b4a71d2336484487e9b23762b0e)  
+    - 아직 백엔드로 사용할 App이 준비되지 않아 작동하지 않습니다.
+```
+   
+
+```
+Mutual TLS Example  
+    - URL: [https://mutual-tls-example-3scale-apicast-staging.amp.shinhan.local/?user_key=97abc73e02ae8babc33655fc3e336583](https://mutual-tls-example-3scale-apicast-staging.amp.shinhan.local/?user_key=97abc73e02ae8babc33655fc3e336583)"  
+    - certificate: client.crt  
+    - private_key: client.key  
+    - cacert: openshift_ca.crt
+```

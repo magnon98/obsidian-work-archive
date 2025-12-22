@@ -1,0 +1,5 @@
+|   |   |
+|---|---|
+|66down voteaccepted|You could consider using [PDFObject](https://github.com/pipwerks/PDFObject) by Philip Hutchison.  <br>Alternatively, if you're looking for a non-Javascript solution, you could use markup like this:  <br><br>```<br>\<object data="myfile.pdf" type="application/pdf" width="100%" height="100%"\>￼  \<p\>Alternative text - include a link \<a href="myfile.pdf"\>to the PDF!\</a\>\</p\>￼\</object\><br>```<br><br>  <br>[share](http://stackoverflow.com/a/14081168)[improve this answer](http://stackoverflow.com/posts/14081168/edit)<br><br>  <br><br>[http://pdfobject.com/index.php](http://pdfobject.com/index.php)|
+
+\<iframe src="http://docs.google.com/gview?url=**http://infolab.stanford.edu/pub/papers/google.pdf**&embedded=true" style="width:600px; height:500px;" frameborder="0"\>\</iframe\>

@@ -1,0 +1,31 @@
+- k8s 각 컴포넌트가 다른 이름으로 2개씩 뜨는데, 왜 그런지...  
+     --\> pod 마다 pause 컨테이너가 올라감. ([pause 컨테이너의 역할](https://www.evernote.com/shard/s112/nl/12593429/48067c93-fed0-42d7-84c7-cd5870128fcd))  
+- max memory가 1.795GiB로 할당되어 있는데 512 ~ 768 MiB 정도로 제한 가능할지.  
+     --\> 사용량이 극히 미미하므로 제한한 필요 없음.
+    
+```
+Master 01
+    ad82a2187670        0.63%               169.6 MiB / 1.795 GiB   9.23%               0 B / 0 B           83.8 MB / 0 B       6        "/k8s_kube-apiserver_kube-apiserver-master01_kube-system_056cc2ff7c54f1979b783d25f7128d09_1"
+    fc1a0329fcc3        0.43%               21.81 MiB / 488.3 MiB   4.47%               0 B / 0 B           0 B / 0 B           5        "/k8s_kube-controller-manager_kube-controller-manager-master01_kube-system_7958b3973fdbbf1bc1c919caf68fd02b_2"
+    07383891468a        0.10%               48.84 MiB / 1.795 GiB   2.66%               0 B / 0 B           42.2 MB / 0 B       6        "/k8s_kube-proxy_kube-proxy-master01_kube-system_93c8fd1c71c775b99ed98ece693716da_3"
+    ac83e069bb3d        0.09%               51.5 MiB / 488.3 MiB    10.55%              0 B / 0 B           44.6 MB / 0 B       5        "/k8s_kube-scheduler_kube-scheduler-master01_kube-system_ecb5b80500f8e683c7ce04f88298802c_1"
+    fcc7ba0e9244        0.00%               49.93 MiB / 476.8 MiB   10.47%              0 B / 0 B           48.5 MB / 0 B       8        "/k8s_flannel-container_flannel-master01_kube-system_5a7d07fde78751d25cfc4c606aea1723_3"
+    2f69a9333d7b        1.02%               117.5 MiB / 512 MiB     22.95%              0 B / 0 B           26.6 MB / 122 MB    8        "/etcd1"
+    44d0ba3902d2        0.00%               772 KiB / 1.795 GiB     0.04%               0 B / 0 B           733 kB / 0 B        1        "/k8s_POD_kube-apiserver-master01_kube-system_056cc2ff7c54f1979b783d25f7128d09_1"
+    1400fe33ba4d        0.00%               44 KiB / 1.795 GiB      0.00%               0 B / 0 B           0 B / 0 B           1        "/k8s_POD_kube-controller-manager-master01_kube-system_7958b3973fdbbf1bc1c919caf68fd02b_1"
+    44c37b17ec5f        0.00%               36 KiB / 1.795 GiB      0.00%               0 B / 0 B           0 B / 0 B           1        "/k8s_POD_kube-proxy-master01_kube-system_93c8fd1c71c775b99ed98ece693716da_3"
+    7d1a684e73d7        0.00%               36 KiB / 1.795 GiB      0.00%               0 B / 0 B           0 B / 0 B           1        "/k8s_POD_kube-scheduler-master01_kube-system_ecb5b80500f8e683c7ce04f88298802c_1"
+    635e1bb78faf        0.00%               40 KiB / 1.795 GiB      0.00%               0 B / 0 B           0 B / 0 B           1        "/k8s_POD_flannel-master01_kube-system_5a7d07fde78751d25cfc4c606aea1723_3"
+Master 02
+    5c4930b9377c        0.22%               144.1 MiB / 1.795 GiB   7.84%               0 B / 0 B           83.2 MB / 0 B       6        /k8s_kube-apiserver_kube-apiserver-master02_kube-system_edd4c3c93ca78747451a40be19b6eec6_1
+    c21d863150e8        0.01%               78.66 MiB / 488.3 MiB   16.11%              0 B / 0 B           74.7 MB / 0 B       5        /k8s_kube-controller-manager_kube-controller-manager-master02_kube-system_7958b3973fdbbf1bc1c919caf68fd02b_1
+    a10b7de773df        0.06%               48.84 MiB / 1.795 GiB   2.66%               0 B / 0 B           42.2 MB / 0 B       6        /k8s_kube-proxy_kube-proxy-master02_kube-system_199c8b1c87dbbd11352a81e853cb19e2_3
+    27178c497ba9        0.04%               50.2 MiB / 488.3 MiB    10.28%              0 B / 0 B           44.6 MB / 0 B       5        /k8s_kube-scheduler_kube-scheduler-master02_kube-system_ecb5b80500f8e683c7ce04f88298802c_1
+    af1cda8453be        0.00%               49.96 MiB / 476.8 MiB   10.48%              0 B / 0 B           48.5 MB / 0 B       8        /k8s_flannel-container_flannel-master02_kube-system_5a7d07fde78751d25cfc4c606aea1723_3
+    cee1462bcb74        0.55%               78.36 MiB / 512 MiB     15.30%              0 B / 0 B           27 MB / 147 MB      8        /etcd2
+    7d855dafbce7        0.00%               40 KiB / 1.795 GiB      0.00%               0 B / 0 B           0 B / 0 B           1        /k8s_POD_kube-apiserver-master02_kube-system_edd4c3c93ca78747451a40be19b6eec6_1
+    0b5b4044f5ef        0.00%               776 KiB / 1.795 GiB     0.04%               0 B / 0 B           750 kB / 0 B        1        /k8s_POD_kube-controller-manager-master02_kube-system_7958b3973fdbbf1bc1c919caf68fd02b_1
+    04f3b37d3c39        0.00%               36 KiB / 1.795 GiB      0.00%               0 B / 0 B           0 B / 0 B           1        /k8s_POD_kube-proxy-master02_kube-system_199c8b1c87dbbd11352a81e853cb19e2_3
+    3b12488018d4        0.00%               36 KiB / 1.795 GiB      0.00%               0 B / 0 B           0 B / 0 B           1        /k8s_POD_kube-scheduler-master02_kube-system_ecb5b80500f8e683c7ce04f88298802c_1
+    60ec9f45174c        0.00%               40 KiB / 1.795 GiB      0.00%               0 B / 0 B           0 B / 0 B           1        /k8s_POD_flannel-master02_kube-system_5a7d07fde78751d25cfc4c606aea1723_3
+```

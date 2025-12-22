@@ -1,0 +1,1 @@
+rh_user_pass=Earth@1010 ansible-playbook -v /usr/share/ansible/openshift-ansible/playbooks/openshift-logging/config.yml --force -K

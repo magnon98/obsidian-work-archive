@@ -1,0 +1,85 @@
+```
+OCP 백업 스크립트 생성 및 적용
+```
+   
+4. ```
+    운영 OCP 환경에 대한 오류발생 Object 조치 방안
+    ```
+    
+    ```
+    pv 도 남아있는게 있다.
+    ```
+    
+      
+     
+```
+컨테이너 모니터링 방안
+```
+
+```
+RabbitMQ 컨테이너화 작업 공유
+```
+
+```
+- 수지DC 역량강화 측면의 공유
+```
+      
+
+```
+------  
+3번 마스터에 이상한 disk 가 있음. (sdh) --\> 기술문의에 확인 (지금 쓰고 있는 disk인지 확인할 방법)
+```
+       
+```
+# etcdctl --cert-file=/etc/etcd/peer.crt --key-file=/etc/etcd/peer.key --ca-file=/etc/etcd/ca.crt --peers="https://m1.ocp.bliex.io:2379,https://m2.ocp.bliex.io:2379,https://m3.ocp.bliex.io:2379" cluster-health
+```
+    
+```
+# ETCDCTL_API=3 etcdctl --cert=/etc/etcd/peer.crt --key=/etc/etcd/peer.key --cacert=/etc/etcd/ca.crt --endpoints="https://m1.ocp.bliex.io:2379,https://m2.ocp.bliex.io:2379,https://m3.ocp.bliex.io:2379" endpoint health
+```
+   
+
+```
+# etcdctl3 member list
+```
+    
+```
+- registry 이미지 백업  
+[https://access.redhat.com/solutions/3663261](https://access.redhat.com/solutions/3663261)  
+POD의 registry 디렉토리를 통으로 백업하는 방식.
+```
+ 
+```
+- 운영중인 POD의 Template file 백업  
+[https://docs.openshift.com/dedicated/admin_guide/assembly_backing-up-restoring-project-application.html](https://docs.openshift.com/dedicated/admin_guide/assembly_backing-up-restoring-project-application.html)  
+POD 보다는 bc, dc 쪽이 맞지 않을지…  
+아니면 bc, dc, deployment, statefulset, daemonset… 등등 전부를 백업하는게…  
+for PRJ in `oc get project -o name | sed 's/project\.project\.openshift\.io\///g'`; do oc get all -o yaml --export -n $PRJ \> "$PRJ"_backup.yaml; done
+```
+   
+
+```
+### all 에 포함 안되는 것들...  
+rolebindings serviceaccounts secrets imagestreamtags cm egressnetworkpolicies rolebindingrestrictions limitranges resourcequotas pvc templates cronjobs statefulsets hpa deployments replicasets poddisruptionbudget endpoints
+```
+    
+```
+- etcd 백업  
+[https://docs.openshift.com/container-platform/3.11/day_two_guide/environment_backup.html#etcd-backup_environment-backup](https://docs.openshift.com/container-platform/3.11/day_two_guide/environment_backup.html#etcd-backup_environment-backup)
+```
+      
+
+```
+- 컨테이너별 Resource 사용량 및 History 조회 방안  
+cpu / memory 는 Prometheus / Grafana 를 통해 조회 가능.  
+데이터는 15일간 보관됨 ('--storage.tsdb.retention=15d')
+```
+   
+
+```
+- 컨테이너 Health Check 방안
+```
+
+```
+pod 가 비정상일 때 알람을 받을 방법
+```

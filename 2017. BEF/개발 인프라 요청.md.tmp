@@ -1,0 +1,24 @@
+portal client + server  
+admin client + server  
+builder  
+db  
+------------------------------------  
+k8s master  
+k8s worker  
+k8s reverse proxy ( admin 인스턴스에 구성?)  
+nas  
+------------------------------------  
+ELK  
+Prometheus  
+Grafana  
+LDAP  
+------------------------------------  
+Jenkins
+       
+portal / admin / builder / db - 1  
+o&m - 1  
+개발용 k8s master 3  
+개발용 k8s worker 1  
+k8s 테스트용 k8s master 3  
+k8s 테스트용 k8s worker 1  
+총 10대

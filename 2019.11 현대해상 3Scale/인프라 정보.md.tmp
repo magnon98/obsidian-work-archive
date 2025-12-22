@@ -1,0 +1,429 @@
+# 개발계 네트워크 대역
+
+- ```
+    DMZ
+    ```
+    
+    ```
+    GW: 123.215.243.97
+    ```
+    
+    ```
+    Subnet: 255.255.255.224  ( 123.215.243.96/27 ??? )
+    ```
+    
+    ```
+    네트워크 사용: 123.215.243.98 ~ 100
+    ```
+    
+    ```
+    서버사용: 123.215.243.101 ~ 126
+    ```
+    
+
+```
+외부망
+```
+          
+# 개발계 VM
+
+|   |   |   |   |   |   |   |   |   |   |
+|---|---|---|---|---|---|---|---|---|---|
+||
+```
+IP
+```
+|||
+```
+Storage
+```
+||||||
+```
+Hostname
+```
+```
+Service Network
+```
+```
+Backend Network
+```
+```
+CPU
+```
+```
+Memory
+```
+```
+/boot
+```
+```
+/boot/efi
+```
+```
+rootvg
+```
+```
+dockervg
+```
+```
+rootvg/rootlv /
+```
+```
+rootvg/swaplv
+```
+```
+dockervg/dockerlv
+```
+```
+cdae-ocpmst01.hi-a.co.kr
+```
+```
+10.221.31.52
+```
+```
+10.224.11.34
+```
+```
+4
+```
+```
+16
+```
+```
+500 MB
+```
+```
+500MB
+```
+```
+150 GB
+```
+```
+100GB
+```
+```
+100 GB
+```
+```
+32 GB
+```
+```
+???
+```
+```
+cdae-ocpifr01.hi-a.co.kr
+```
+```
+10.221.31.53
+```
+```
+10.224.11.35
+```
+```
+4
+```
+```
+8
+```
+```
+500 MB
+```
+```
+500MB
+```
+```
+150 GB
+```
+```
+100GB
+```
+```
+100 GB
+```
+```
+16 GB
+```
+```
+???
+```
+```
+cdae-ocpapp01.hi-a.co.kr
+```
+```
+10.221.31.54
+```
+```
+10.224.11.36
+```
+```
+4
+```
+```
+24
+```
+```
+500 MB
+```
+```
+500MB
+```
+```
+150 GB
+```
+```
+100GB
+```
+```
+100 GB
+```
+```
+32 GB
+```
+```
+???
+```
+```
+cdae-ocpprg01.hi-a.co.kr
+```
+```
+10.221.31.55
+```
+```
+10.224.11.37
+```
+```
+2
+```
+```
+4
+```
+```
+500 MB
+```
+```
+500MB
+```
+```
+150 GB
+```
+```
+100GB
+```
+```
+100 GB
+```
+```
+8 GB
+```
+```
+-
+```
+```
+cdae-ocpgit01.hi-a.co.kr
+```
+```
+10.221.31.56
+```
+```
+10.224.11.38
+```
+```
+4
+```
+```
+8
+```
+```
+500 MB
+```
+```
+500MB
+```
+```
+150 GB
+```
+```
+100GB
+```
+```
+100 GB
+```
+```
+16 GB
+```
+-|
+```
+cdaz-oaproxy01
+```
+```
+123.215.243.101
+```
+```
+10.224.21.32
+```
+|
+```
+16
+```
+|||||||
+    
+# NTP Server
+
+- ```
+    외부망서버:
+    ```
+    
+    ```
+    10.18.12.70 / 10.18.12.71
+    ```
+    
+- ```
+    DMZ서버
+    ```
+    
+    ```
+    192.168.5.44 / 192.168.5.45 (백엔드망 라우팅 설정)
+    ```
+    
+    
+# URLs
+
+- ```
+    dev
+    ```
+    
+    - ```
+        ocp console 
+        ```
+        
+        ```
+        [https://console.hi-a.co.kr](https://console.hi-a.co.kr)
+        ```
+        
+        ```
+        ocpadmin // ocpadmin
+        ```
+        
+          
+        
+    - ```
+        3scale master portal
+        ```
+        
+        ```
+        [https://master.apid.hi.co.kr](https://master.apid.hi.co.kr)
+        ```
+        
+        ```
+        master // hdmf!234
+        ```
+        
+          
+        
+    - ```
+        3scale admin portal
+        ```
+        
+        ```
+        [https://oa-admin.apid.hi.co.kr](https://oa-admin.apid.hi.co.kr)
+        ```
+        
+        ```
+        admin // hdmf!234
+        ```
+        
+          
+        
+    - ```
+        3scale developer portal
+        ```
+        
+        ```
+        [https://apid-portal.hi.co.kr/](https://apid-portal.hi.co.kr/)
+        ```
+        
+        ```
+        bliex // qmfflrtm123$￼
+        ```
+        
+    - ```
+        RH-SSO
+        ```
+        
+        ```
+        [https://apid-sso.hi.co.kr/](https://apid-sso.hi.co.kr/)
+        ```
+        
+        ```
+        ??? // ???
+        ```
+        
+      
+    
+- ```
+    prd
+    ```
+    
+    - ```
+        ocp console 
+        ```
+        
+        ```
+        [https://console.hi.co.kr](https://console.hi.co.kr)
+        ```
+        
+        ```
+        ??? // ???
+        ```
+        
+          
+        
+    - ```
+        3scale master portal
+        ```
+        
+        ```
+        [https://master.api.hi.co.kr](https://master.api.hi.co.kr)
+        ```
+        
+        ```
+        master // hdmf!234
+        ```
+        
+          
+        
+    - ```
+        3scale admin portal
+        ```
+        
+        ```
+        [https://oa-admin.api.hi.co.kr](https://oa-admin.api.hi.co.kr)
+        ```
+        
+        ```
+        admin // hdmf!234
+        ```
+        
+          
+        
+    - ```
+        3scale developer portal
+        ```
+        
+        ```
+        [https://api-portal.hi.co.kr/](https://api-portal.hi.co.kr/)
+        ```
+        
+        -   
+            
+    - ```
+        RH-SSO
+        ```
+        
+        ```
+        [https://api-sso.hi.co.kr/](https://api-sso.hi.co.kr/)
+        ```
+        
+        ```
+        admin // ETMtNFyEiySeb0cDlBD40M8LCYka0uf5
+        ```

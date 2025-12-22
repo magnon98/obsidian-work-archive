@@ -1,0 +1,35 @@
+```
+OCP Webconsole  
+[https://d-platform.doosan.com](https://d-platform.doosan.com)  
+ID: adm  
+PW: ddp!1234
+```
+ 
+```
+3Scale Admin  
+[https://3scale-admin.apig.d-platform.doosan.com/](https://3scale-admin.apig.d-platform.doosan.com/)  
+ID: admin  
+PW: ddp!1234
+```
+ 
+```
+3Scale Developer  
+[https://3scale.apig.d-platform.doosan.com/](https://3scale.apig.d-platform.doosan.com/)  
+ID: john  
+PW: 123456
+```
+ 
+```
+VM  
+ddp-bastion  
+host: ddp-bastion.koreacentral.cloudapp.azure.com  
+ID: azureuser  
+PW: Passw0rd!123  
+다른 VM들은 필요시마다 수지DC에 요청해서 받음.
+```
+   
+
+```
+azureuser // Passw0rd!123  
+ddpadm // 123qwe..
+```

@@ -1,0 +1,1 @@
+[https://confluence.atlassian.com/adminjiraserver/user-management-limitations-and-recommendations-938847048.html](https://confluence.atlassian.com/adminjiraserver/user-management-limitations-and-recommendations-938847048.html)

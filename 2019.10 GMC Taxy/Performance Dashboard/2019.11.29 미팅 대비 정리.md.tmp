@@ -1,0 +1,92 @@
+```
+Akamai Dashboard 에서 사용하는 API와 mPulse API는 다른 API
+```
+ 
+- ```
+    DB가 없어 까다로운 부분들이 발생
+    ```
+    
+    ```
+    Security Token 관리가 까다로움.
+    ```
+    
+    - ```
+        API Rate Limit(시간당 query 개수 제한)이 있음.
+        ```
+        
+        ```
+        각각의 메트릭을 따로 조회해야 하는데 쿼리 개수 제한에 걸릴 수 있음.
+        ```
+        
+        ```
+        대안으로 데이터소스 내부에 일정 기간의 데이터를 적재해 두는 방안이 있음
+        ```
+        
+ 
+```
+상단의 필터는 어떤 것들이 필요한지.￼필터에 사용될 옵션들을 동적으로 가져와야 할거 같은데, ￼어디서 또는 어떤 API를 통해 가져올 수 있을지 ( API + query params )
+```
+ - ```
+    잘 작동하던 쿼리들이 아침부터 400 Bad request 에러 발생
+    ```
+    
+    ```
+    레퍼런스 매뉴얼에는 바뀐게 없음….
+    ```
+    
+    ```
+    Security Token 발급 API는 정상적으로 작동
+    ```
+    
+    ```
+    /concerto/services/rest/*** 류의 API는 잘 작동
+    ```
+    
+    - ```
+        /concerto/mpulse/api/v2/*** 류의 API가 작동하지 않음.
+        ```
+        
+        ```
+        ex) curl -vvv -H 'Authentication: 76c1575b-307384-49f4-b8c2-5ca72a8b4105' '[https://mpulse.soasta.com/concerto/mpulse/api/v2/VRZKC-5BSTD-4EWS3-R2J59-B8GYB/summary](https://mpulse.soasta.com/concerto/mpulse/api/v2/VRZKC-5BSTD-4EWS3-R2J59-B8GYB/summary)'
+        ```
+        
+    
+    ```
+    서버 에러였는지 50분 뒤 정상화
+    ```
+    
+   
+
+```
+PageLoad, TimeToVisuallyReady 메트릭은 찾았으나, Major Page Performance, Top/Bottom countries 는 찾지 못함.￼어떤 API를 통해 가져올 수 있을지 ( API + query params )
+```
+   
+
+```
+API Rate Limits
+```
+
+```
+Concurrent API calls: 3
+```
+
+```
+API calls per minute: 100
+```
+
+```
+API calls per hour: 10000
+```
+
+```
+API calls per day: 50K
+```
+ \> 출처: \<[https://developer.akamai.com/api/web_performance/mpulse_query/v2.html#JSONResponseFormats](https://developer.akamai.com/api/web_performance/mpulse_query/v2.html#JSONResponseFormats)\>  
+
+```
+현재 남은 이슈 목록/내용
+```
+ 
+```
+접속정보
+```

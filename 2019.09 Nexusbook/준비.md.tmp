@@ -1,0 +1,83 @@
+```
+PDF to TXT - Apache PDFBox
+```
+
+```
+[https://pdfbox.apache.org/](https://pdfbox.apache.org/)
+```
+
+```
+CLI용과 Lib 용의 jar 가 배포됨
+```
+
+- ```
+    ex)
+    ```
+    
+    ```
+    java -jar pdfbox-app-2.0.16.jar ExtractText -console "14-15페이지.pdf"
+    ```
+    
+   
+
+```
+XSLX to TXT
+```
+
+- ```
+    SheetJS
+    ```
+    
+    ```
+    [https://github.com/SheetJS/js-xlsx](https://github.com/SheetJS/js-xlsx)
+    ```
+    
+    ```
+    기능이 참 많음……
+    ```
+    
+      
+    
+- ```
+    excel.js
+    ```
+    
+    ```
+    [https://github.com/trevordixon/excel.js](https://github.com/trevordixon/excel.js)
+    ```
+    
+    ```
+    단순?
+    ```
+    
+    -   
+           
+         
+
+```
+TTS - Google TTS
+```
+
+```
+[https://cloud.google.com/text-to-speech/?hl=ko](https://cloud.google.com/text-to-speech/?hl=ko)
+```
+
+```
+API Key가 필요한데…
+```
+ 
+```
+UI - Electron
+```
+
+- ```
+    Electron 에서 jar 실행하는 건 Child Process 로 가능하다고 함…
+    ```
+    
+    ```
+    [https://stackoverflow.com/questions/47364597/electron-app-call-java-jar](https://stackoverflow.com/questions/47364597/electron-app-call-java-jar)
+    ```
+    
+    ```
+    [https://nodejs.org/api/child_process.html](https://nodejs.org/api/child_process.html)
+    ```

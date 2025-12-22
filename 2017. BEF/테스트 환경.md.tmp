@@ -1,0 +1,46 @@
+**테스트 환경**
+
+- VM: AWS EC2 t2.small x 4
+- OS: RHEL
+- VPC
+- public subnet: reverse proxy instance
+- private subnet: k8s instances 
+**api 사용을 위한 serviceaccount의  bearer token 획득**
+
+|   |
+|---|
+|**### serviceaccount 로부터 secret의 name 속성 값을 획득. (여기서는 기본 계정인 default를 사용)**  <br>**$ TOKEN_NAME=`kubectl get serviceaccount default -o jsonpath="{.secrets..name}"`**  <br>   <br>**### secret에서 token을 획득하고, base64로 decode함**  <br>**$ AUTH_TOKEN=`kubectl get secret $TOKEN_NAME -o jsonpath='{.data.token}' \| base64 -d`**  <br>   <br>**### API 테스트. $MASTER_IP는 master node의 외부 IP**  <br>**$ curl** **https://$MASTER_IP:6443/** **--header "Authorization: Bearer $AUTH_TOKEN"**|
+
+** kubeconfig에 지정된 계정(admin)의 token **  
+$ kubectl config view -o jsonpath='{.users[?(@.name=="admin")].user.token}' | base64 -d  
+**Master 노드의 apiserver용 인증서를 reverse proxy용 인스턴스에 복사**
+
+|   |
+|---|
+|**$ scp [MASTER_NODE]:/etc/kubernetes/ssl/apiserver.pem ~/**  <br>**$ sudo cp ~/apiserver.pem /etc/pki/tls/certs/**|
+
+**마스터 노드에 대한 reverse proxy 구성**  
+**reverse proxy에서 사용할 사설 인증서 생성**
+
+|   |
+|---|
+|**$ openssl genrsa -des3 -out nginx_ssl.key.orig 1024**  <br>**$ openssl req -new -key nginx_ssl.key.orig -out server.csr**  <br>**$ openssl rsa -in nginx_ssl.key.orig -out nginx_ssl.key**  <br>**$ openssl x509 -req -days 365 -in nginx_ssl.csr -signkey nginx_ssl.key -out nginx_ssl.crt**  <br>**$ sudo cp nginx_ssl.crt nginx_ssl.key /etc/pki/tls/certs/**|
+
+**nginx 설치**
+
+|   |
+|---|
+|**$ cat \<\<EOF \| sudo tee /etc/yum.repos.d/nginx.repo**  <br>**[nginx]**  <br>**name=nginx repo**  <br>**baseurl=****http://nginx.org/packages/rhel/7/$basearch/**  <br>**gpgcheck=0**  <br>**enabled=1**  <br>**EOF**  <br>**$ sudo yum install nginx**  <br>**$ sudo systemctl enable nginx**  <br>**$ sudo systemctl start nginx**|
+ 
+**reverse proxy 설정**
+
+|   |
+|---|
+|**### create reverse proxy conf**  <br>**$ cat \<\<EOF \| sudo tee /etc/nginx/conf.d/reverse_proxy.conf**  <br>**upstream k8s_master {**  <br>**server 10.0.100.58:6443;**  <br>**}**  <br>   <br>**server {**  <br>**listen 443;**  <br>   <br>**ssl                 on;**  <br>**ssl_certificate     /etc/pki/tls/certs/nginx_ssl.crt;**  <br>**ssl_certificate_key /etc/pki/tls/certs/nginx_ssl.key;**  <br>   <br>**location / {**  <br>**proxy_pass**        **https://k8s_master****;**  <br>**proxy_pass_header Authorization;**  <br>**proxy_ssl_name    /etc/pki/tls/certs/apiserver.pem;**  <br>**}**  <br>**}**  <br>**EOF**  <br>**$ sudo systemctl restart nginx**|
+
+**테스트**   
+nginx의 ssl 설정에 사설 인증서를 사용하였기 때문에 테스트시 인증서의 유효성 검사를 진행하지 않도록 --insecure 옵션 필요.
+
+|   |
+|---|
+|**### test - aws**  <br>**$ curl --insecure --header "Authorization: Bearer eyJhbGciOiJSUzI1N....."** **https://localhost/**  <br>**### test - aws**  <br>**$ curl --insecure --header "Authorization: Bearer eyJhbGciOiJSUzI1N....."** **https://[aws_public_instance_ip]/**|

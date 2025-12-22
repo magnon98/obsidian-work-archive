@@ -1,0 +1,89 @@
+```
+### DDP 장애대응 - 2019.11.23
+```
+   
+
+```
+1. 기존 API public baseurl 변경
+```
+ 
+```
+2. 신규 API 생성
+```
+ 
+```
+3. Application Plan 생성
+```
+ 
+```
+4. Developer 그룹에 App 생성
+```
+ 
+```
+5. API Service 상세 설정 - private / public base url 등 
+```
+ 
+```
+6. secret token, user_key 를 기존 API의 값으로 업데이트
+```
+ 
+```
+7. production에 promote
+```
+      
+
+```
+curl "[http://lp-adm-api-market-div-ds-lp-dev-noauth.api.doosan-iv.com:443/health?user_key=6c466f8148b8a10021e4dd2efe1db9d8](http://lp-adm-api-market-div-ds-lp-dev-noauth.api.doosan-iv.com:443/health?user_key=6c466f8148b8a10021e4dd2efe1db9d8)"
+```
+   
+
+```
+curl -k "[https://echo-api-test2-staging.apig.d-platform.doosan.com:443/](https://echo-api-test2-staging.apig.d-platform.doosan.com:443/)" -H "user-key: de776de76025234f0421d8190733ffef"
+```
+   
+
+```
+curl "[http://div-ds-qrn-api-placebiz-doosaniv-ds-noauth.api.doosan-iv.com:80/](http://div-ds-qrn-api-placebiz-doosaniv-ds-noauth.api.doosan-iv.com:80/)" -H'user-key: 39438351270ae028dfe45343aa39e70e'
+```
+          
+```
+subscription-manager repos --enable=rhel-7-server-rpms --enable=rhel-7-server-extra-rpms
+```
+            
+
+```
+curl  fuse-div-ds-cmn-api-service-doosaniv-ds.apps.d-platform.doosan.com/health
+```
+ 
+```
+curl -k [https://div-ds-cmn-api-service-staging.api.doosan-iv.com/health](https://div-ds-cmn-api-service-staging.api.doosan-iv.com/health) -vvv
+```
+          
+```
+oc new-app -f amp_2.3GA.yaml --param WILDCARD_DOMAIN=apim.d-platform.doosan.com --param WILDCARD_POLICY=Subdomain --param ADMIN_USERNAME=admin --param ADMIN_PASSWORD='ddp!1234' --param MASTER_USER=master --param MASTER_PASSWORD='ddp!1234'
+```
+    
+```
+  - uid=1000840000  
+  - gid=0
+```
+       
+```
+echo '---  
+apiVersion: v1  
+kind: PersistentVolumeClaim  
+metadata:  
+  labels:  
+    3scale.component: system  
+    3scale.component-element: app  
+    app: 3scale-api-management  
+  name: system-storage  
+  namespace: apim  
+spec:  
+  accessModes:  
+  - ReadWriteMany  
+  resources:  
+    requests:  
+      storage: 100Gi  
+  storageClassName: azurefile' | oc create -f -
+```

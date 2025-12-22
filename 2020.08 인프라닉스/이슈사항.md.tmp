@@ -1,0 +1,102 @@
+```
+2020-09-16
+```
+
+```
+Rancher VM 정보를 kube 계정으로 조회할 수 있다고 하는데￼openstack 토큰 발급시 kube 계정으로 안되고 있음￼￼
+```
+
+```
+$ curl -v -s -X POST '[http://112.175.115.243:15000/v3/auth/tokens?nocatalog](http://112.175.115.243:15000/v3/auth/tokens?nocatalog)' \  
+    -H "Content-Type: application/json" \  
+    -d '{  
+  "auth": {  
+    "identity": {  
+      "methods": [  
+        "password"  
+      ],  
+      "password": {  
+        "user": {  
+          "domain": {"name": "admin_domain"},  
+          "name": "kube",  
+          "password": "master77!!"  
+        }  
+      }  
+    },  
+    "scope": {  
+      "project": {  
+        "domain": {"name": "admin_domain"},  
+        "name": "dev"  
+      }  
+    }  
+  }  
+}'  
+￼￼
+```
+
+```
+2020-09-17
+```
+
+```
+sys-cafe CC API access_token 발급을 위한 계정(id, password)은?
+```
+
+```
+CC API 등 OAuth2 방식으로 access token을 발급받는 것들의 grant type이 모두 Authorization Code 인데, 서버사이드에서 호출을 위해서는 client credential 지원 필요.
+```
+
+-   
+    
+      
+
+```
+2020-09-21
+```
+
+```
+kube 계정 / kube 그룹으로 인증토큰 발급 안됨
+```
+
+```
+sys-cafe UAA - 로그인폼에서 로그인은 되지만, callback URL 을 찾을 수 없음.
+```
+
+```
+--\> password grant-type 으로 로그인하면 되서 재질의는 안함.￼
+```
+ 
+```
+2020-09-24
+```
+
+```
+password grant-type 대신 client_credentials 를 활성화해줄 수는 없는지?
+```
+
+-   
+              
+
+```
+2020-10-14
+```
+
+- ```
+    mariadb vms 테이블에는 22개의 VM, imclab의 openstack API로 확인되는 VM 갯수는 116개. 
+    ```
+    
+    ```
+    대시보드에 116개를 다 보여주는 건 말이 안됨.
+    ```
+    
+    - ```
+        대시보드에 보여줄 VM은 어떻게 고르나?
+        ```
+        
+        ```
+        paas-ta, k8s 관련 VM만?
+        ```
+        
+        ```
+        수동으로 지정?
+        ```

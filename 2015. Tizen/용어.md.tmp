@@ -1,0 +1,46 @@
+- Module
+- View
+- Field UI
+- Entity form
+- Display
+- View modes
+- Formatter
+- Field classes
+
+- Entity
+    - 드루팔에서 모든 데이터의 덩어리. Nodes, users, taxonomy terms, files 와 같은 것들을 포함한다. 기여모듈도 커스텀 엔티티를 정의할 수 있다. 각각의 엔티티 타입은 다양한 번들을 포함할 수 있다.
+    - 엔티티 타입이 fieldable entity로 선언되어 있다면 field들을 포함할 수 있다.
+    - 기본적인 엔티티 타입 : comment, node, file, taxonomy_term, taxonomy_vocabulary, and user. 
+
+- Bundle
+    - 엔티티 타입에 대한 구체적인 구현. 예를 들어 Node 엔티티 타입은 content_types 라는 번들을 포함하고 있다. 기본 노드 번들은 Basic Page와 Article.
+      
+    - Bundles are an implementation of an entity type to which fields can be attached.
+    - content types 은 번들의 한 예. 즉, content_type은 번들이다.
+    - field_info_bundles().
+    - 각각의 엔티티 타입은 적어도 하나의 번들로 나눌 수 있다.
+ 
+- Entity Types
+    - hook_entity_info()에서 엔티티 타입을 정의한다.
+    - 엔티티 타입은 필드들을 서로 묶는데 유용한 추상화이다.
+    - Ex
+        - ==Nodes (content)==
+        - ==Comments==
+        - ==Taxonomy terms==
+        - ==User profiles==
+
+[https://www.drupal.org/glossary](https://www.drupal.org/glossary)
+
+- Field
+    - Elements of data that can be attached to a [node](https://www.drupal.org/glossary#node) or other Drupal entities. Fields commonly contain text, image, or terms.
+
+- Nodes
+    - A piece of content in Drupal, typically corresponding to a single page on the site, that has a title, an optional body, and perhaps additional fields. Every node also belongs to a particular==content type==, and can additionally be classified using the ==taxonomy== system. Examples of nodes are polls, stories, book pages and images.
+    - the main content object on Drupal sites, are the prototypical entity;
+    - the creation of the entities concept in Drupal 7 had a lot to do with making the other core objects act more like nodes
+
+- Content Types(Node Types)
+    - Every ==node== belongs to a single “node type” or “==content type==”, which defines various default settings for nodes of that type, such as whether the node is published automatically and whether comments are permitted. Common "Content Types" that just about any website would have include: blog post and page. Content types can have different fields and modules can define their own content types. The core Drupal Book and Poll modules are two examples of modules that define content types.
+    - content types are examples of bundles. That is to say, a content type is a bundle, the most common bundle we are likely to deal with in Drupal 7.
+
+![[Entities-and-Bundles-in-Drupal-7.pdf]]

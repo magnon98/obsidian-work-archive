@@ -1,0 +1,78 @@
+```
+### Uptime 확인
+```
+   
+
+```
+### pv, vg, lv 확인
+```
+   
+
+```
+### ntp 확인
+```
+   
+
+```
+### network 확인
+```
+ 
+-   
+    
+   
+
+```
+### sar, sosreport 확인  
+$ ansible all -m raw -i ./inventory_file.config -a 'sudo yum install -y sysstat sos-collector'
+```
+ 
+```
+$ ansible all -m raw -i ./inventory_file.config -a '  
+mkdir ~/$(date +"%Y%m%d");  
+hostnamectl \> ~/$(date +"%Y%m%d")/hostnamectl_$(hostname).txt;  
+sar -Ap \> ~/$(date +"%Y%m%d")/sar_$(hostname).txt;  
+df -hT \> ~/$(date +"%Y%m%d")/df_$(hostname).txt;  
+top -bn1 | head -n6 \> ~/$(date +"%Y%m%d")/top_$(hostname).txt;  
+journalctl -xe \> ~/$(date +"%Y%m%d")/journalctl_$(hostname).txt;  
+cat /etc/sysconfig/network-scripts/ifcfg-ens192 \> ifcfg_$(hostname).txt;  
+rpm -qa \> ~/$(date +"%Y%m%d")/rpm_installed_$(hostname).txt;  
+yum list installed \> ~/$(date +"%Y%m%d")/yum_installed_$(hostname).txt;  
+docker images \> ~/$(date +"%Y%m%d")/docker_images_$(hostname).txt;  
+'  
+d
+```
+    
+```
+### OCP 클러스터 상태  
+sudo -i  
+mkdir ~/$(date +"%Y%m%d")
+```
+ 
+```
+oc get node -o wide \> ~/$(date +"%Y%m%d")/node_list.txt  
+oc describe node \> ~/$(date +"%Y%m%d")/node_description.txt  
+oc get event --all-namespaces \> ~/$(date +"%Y%m%d")/events_all.txt  
+oc status --all-namespaces --suggest \> ~/$(date +"%Y%m%d")/status_all.txt  
+oc get po --all-namespaces
+```
+      
+
+```
+### 3Scale POD 상태
+```
+
+```
+PVC 사용량
+```
+ 
+```
+### API 설정 / log 확인
+```
+ 
+-   
+    
+   
+
+```
+추가 지원 항목 및 작업사항 청취?
+```

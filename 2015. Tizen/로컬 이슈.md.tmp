@@ -1,0 +1,2 @@
+로그인 안되는 이슈  
+: httpd.conf 에서 LoadModule rewrite_module modules/mod_rewrite.so 주석 해제

@@ -1,0 +1,25 @@
+```
+Openshift-web-console 에 fusion-assets 라는 이상한 빌드가… 의도된 것인지
+```
+ 
+```
+Logging-es replica 0 으로 설정되어 curator 가 에러 발생… 의도된 것인지
+```
+ 
+```
+oc adm diagnostics 에서 docker image pull 이 안되어 일부 테스트 실패.
+```
+    
+```
+Production 으로 promote  이력들은 있으나, apicast를 wildcard-router 로만 사용하고 있음.
+```
+ 
+```
+Developer 의 그룹명이 모두 동일 (ebaykorea)
+```
+ 
+```
+Developer portal   
+fontawsome.css 와 jquery.min.js 파일을 외부에서 가져오지 못해 로딩이 오래 걸림.  
+--\> 내부에 등록하고 main layout을 수정할 필요 있음.
+```

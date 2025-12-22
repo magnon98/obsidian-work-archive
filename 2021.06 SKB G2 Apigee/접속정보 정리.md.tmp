@@ -1,0 +1,932 @@
+175.113.150.220 apigee-edge-dev.sk-iptv.com  
+175.113.150.221 apigee-edge-stg.sk-iptv.com
+    
+```
+CA Policy Manager  
+DEV  
+URL: 175.113.150.20:9001  
+ID: admin  
+PW: g2api1!
+```
+ 
+```
+STG  
+URL: 175.113.150.21:9001  
+viewer  
+ID: BG  
+PW: skbroadband1!  
+admin  
+ID: admin  
+PW: g2api1!
+```
+ 
+```
+PRD - VPN / 방화벽 해제 필요  
+URL: 1.255.152.19:9001  
+ID: admin  
+PW: g2api1!
+```
+ 
+```
+CA Portal (?)  
+DEV
+```
+ 
+```
+STG  
+URL: [http://175.113.150.21:8003/dashboard/apis](http://175.113.150.21:8003/dashboard/apis)  
+ID: admin  
+PW: g2api1!
+```
+   
+
+```
+SSH Bastion  
+동작 G2 TB GW  
+IP: 175.113.150.8  
+ID/PW:  
+- root // qwer1234!@  
+- agwdev // g2api1!  
+NextPaaS GW  
+IP: 1.255.47.121  
+Port: 8000  
+ID/PW:  
+- agwdev // agw1!  
+운영 VM GW  
+IP: 1.255.152.62  
+Port: 5000  
+ID/PW:  
+- apigee // g2api1!
+```
+   
+
+```
+Apigee  
+DEV  
+IP: 10.10.214.111 ~ 10.10.214.116  
+ID: root  
+PW: g2infra1!
+```
+ 
+```
+STG  
+IP: 10.10.214.121 ~ 10.10.214.128  
+ID: root  
+PW: g2infra1!
+```
+ 
+```
+PRD  
+IP: 10.10.12.xx 10.11.12.xx  
+ID: root  
+PW: g2infra1!
+```
+ 
+```
+Grafana  
+PRD  
+URL: [http://1.255.152.21:28030](http://1.255.152.21:28030)  
+ID:   
+PW: 
+```
+   
+
+```
+CA 내부 DB (MySQL)  
+STG  
+GW: 175.113.150.8  
+IP: 10.10.222.4  
+VM   
+ID: root  
+PW: g2api1!  
+MYSQL  
+ID: root  
+PW: 7layer  
+Database: auth  
+Table: auth_token
+```
+    
+```
+Auth Token DB  
+DEV  
+-   
+STG  
+- 10.10.214.127 ~ 128  
+- root // G2infra1!  
+- apigee // G2infra1!
+```
+ 
+```
+Oracle DB  
+- 10.10.222.4  
+root/g2api1!
+```
+   
+
+```
+PRD  
+- 
+```
+   
+
+```
+ 
+```
+ 
+```
+Oracle 19c  
+DEV
+```
+
+- ```
+    10.10.212.8 (Oracle DB)
+    ```
+    
+    ```
+    root/g2api1!
+    ```
+    
+ 
+```
+STG
+```
+
+- ```
+    10.10.222.8 (Oracle DB)
+    ```
+    
+    ```
+    root/g2api1!
+    ```
+    
+    ```
+    jdbc:oracle://10.10.222.8:1521;ServiceName=TAPIGWDB
+    ```
+    
+ 
+```
+PRD  
+수유 DB 접속 정보
+```
+
+```
+jdbc:l7tech:oracle://192.168.5.67:1521;AlternateServers=(192.168.5.65:1521);ServiceName=PBTVDB;LoadBalancing=false
+```
+
+```
+username : APIGWAPP
+```
+
+```
+password : apigwapp6337!#
+```
+ 
+```
+성수 DB 접속 정보
+```
+
+```
+jdbc:l7tech:oracle://192.168.5.68:1521;AlternateServers=(192.168.5.66:1521);ServiceName=PBTVDB;LoadBalancing=false
+```
+
+```
+username : APIGWAPP
+```
+
+```
+password : apigwapp6337!#
+```
+      
+
+```
+Edge UI  
+DEV / STG / PRD  
+canape@bliex.com // Qmfflrtm123$  
+BG_NOC@bespinglobal.com // Skbroadband1!
+```
+ 
+```
+DEV: [http://175.113.150.220:8003](http://175.113.150.220:8003)  
+STG: [http://175.113.150.221:8003](http://175.113.150.221:8003)  
+prd-suy: [http://1.255.152.49:8003](http://1.255.152.49:8003)  
+prd-ssu: [http://1.255.152.149:8003](http://1.255.152.149:8003)  
+ 
+```
+  
+|   |
+|---|
+||
+```
+IP
+```
+```
+SSH Port
+```
+```
+SSH id
+```
+```
+SSH password
+```
+```
+SSH key
+```
+```
+component
+```
+```
+DEV
+```
+```
+175.113.150.8
+```
+```
+22
+```
+```
+agwdev
+```
+```
+g2api1!
+```
+```
+skb-dev-bastion_rsa
+```
+```
+bastion
+```
+||
+```
+10.10.214.111 ~ 113
+```
+```
+22
+```
+```
+root
+```
+```
+g2infra1!
+```
+```
+skb-dev-bastion_rsa
+```
+```
+DS
+```
+||
+```
+10.10.214.114 ~ 115
+```
+```
+22
+```
+```
+root
+```
+```
+g2infra1!
+```
+```
+skb-dev-bastion_rsa
+```
+```
+RMP
+```
+||
+```
+10.10.214.116
+```
+```
+22
+```
+```
+root
+```
+```
+g2infra1!
+```
+```
+skb-dev-bastion_rsa
+```
+```
+MS
+```
+||
+```
+10.10.214.117
+```
+```
+22
+```
+```
+root
+```
+```
+g2infra1!
+```
+```
+skb-dev-bastion_rsa
+```
+```
+SAX
+```
+```
+STG
+```
+```
+175.113.150.8
+```
+```
+22
+```
+```
+agwdev
+```
+```
+g2api1!
+```
+```
+skb-dev-bastion_rsa
+```
+```
+bastion
+```
+||
+```
+10.10.214.121 ~ 123
+```
+```
+22
+```
+```
+root
+```
+```
+g2infra1!
+```
+```
+skb-stg_rsa
+```
+```
+DS
+```
+||
+```
+10.10.214.124 ~ 125
+```
+```
+22
+```
+```
+root
+```
+```
+g2infra1!
+```
+```
+skb-stg_rsa
+```
+```
+RMP
+```
+||
+```
+10.10.214.130 ~ 133
+```
+```
+22
+```
+```
+root
+```
+```
+g2infra1!
+```
+```
+skb-stg_rsa
+```
+```
+RMP
+```
+||
+```
+10.10.214.126
+```
+```
+22
+```
+```
+root
+```
+```
+g2infra1!
+```
+```
+skb-stg_rsa
+```
+```
+MS
+```
+||
+```
+10.10.214.127 ~ 128
+```
+```
+22
+```
+```
+root
+```
+```
+g2infra1!
+```
+```
+skb-stg_rsa
+```
+```
+SAX
+```
+```
+PRD - SUY
+```
+```
+1.255.152.62
+```
+```
+5000
+```
+```
+apigee
+```
+```
+g2api1!
+```
+```
+skb-prd-bastion_rsa
+```
+```
+bastion
+```
+||
+```
+10.10.12.41 ~ 46
+```
+```
+22
+```
+```
+root
+```
+```
+g2infra1!
+```
+```
+skb-prd-suy_rsa
+```
+```
+DS
+```
+||
+```
+10.10.12.21 ~ 40
+```
+```
+22
+```
+```
+root
+```
+```
+g2infra1!
+```
+```
+skb-prd-suy_rsa
+```
+```
+RMP
+```
+||
+```
+10.10.12.51 ~ 52
+```
+```
+22
+```
+```
+root
+```
+```
+g2infra1!
+```
+```
+skb-prd-suy_rsa
+```
+```
+LDAP
+```
+||
+```
+10.10.12.53 ~ 54
+```
+```
+22
+```
+```
+root
+```
+```
+g2infra1!
+```
+```
+skb-prd-suy_rsa
+```
+```
+MS
+```
+||
+```
+10.10.12.61 ~ 62
+```
+```
+22
+```
+```
+root
+```
+```
+g2infra1!
+```
+```
+skb-prd-suy_rsa
+```
+```
+QS
+```
+||
+```
+10.10.12.71 ~ 72
+```
+```
+22
+```
+```
+root
+```
+```
+g2infra1!
+```
+```
+skb-prd-suy_rsa
+```
+```
+PS
+```
+```
+PRD - SSU
+```
+```
+1.255.152.62
+```
+```
+5000
+```
+```
+apigee
+```
+```
+g2api1!
+```
+```
+skb-prd-bastion_rsa
+```
+```
+bastion
+```
+||
+```
+10.11.12.41 ~ 46
+```
+```
+22
+```
+```
+root
+```
+```
+g2infra1!
+```
+```
+skb-prd-ssu_rsa
+```
+```
+DS
+```
+||
+```
+10.11.12.21 ~ 40
+```
+```
+22
+```
+```
+root
+```
+```
+g2infra1!
+```
+```
+skb-prd-ssu_rsa
+```
+```
+RMP
+```
+||
+```
+10.11.12.51 ~ 52
+```
+```
+22
+```
+```
+root
+```
+```
+g2infra1!
+```
+```
+skb-prd-ssu_rsa
+```
+```
+LDAP
+```
+||
+```
+10.11.12.53 ~ 54
+```
+```
+22
+```
+```
+root
+```
+```
+g2infra1!
+```
+```
+skb-prd-ssu_rsa
+```
+```
+MS
+```
+||
+```
+10.11.12.61 ~ 62
+```
+```
+22
+```
+```
+root
+```
+```
+g2infra1!
+```
+```
+skb-prd-ssu_rsa
+```
+```
+SAX
+```
+```
+nGrinder
+```
+```
+175.113.150.8
+```
+```
+22
+```
+```
+agwdev
+```
+```
+g2api1!
+```
+```
+skb-dev-bastion_rsa
+```
+```
+bastion
+```
+||
+```
+10.10.214.134
+```
+```
+22
+```
+```
+root
+```
+```
+g2infra1!
+```
+```
+skb-stg_rsa
+```
+```
+nGrinder Host
+```
+||
+```
+10.10.214.135
+```
+```
+22
+```
+```
+root
+```
+```
+g2infra1!
+```
+```
+skb-stg_rsa
+```
+```
+nGrinder Agent
+```
+||
+```
+10.10.214.136
+```
+```
+22
+```
+```
+root
+```
+```
+g2infra1!
+```
+```
+skb-stg_rsa
+```
+```
+nGrinder Agent
+```
+||
+```
+10.10.214.137
+```
+```
+22
+```
+```
+root
+```
+```
+g2infra1!
+```
+```
+skb-stg_rsa
+```
+```
+nGrinder Agent
+```
+||
+```
+10.10.214.138
+```
+```
+22
+```
+```
+root
+```
+```
+g2infra1!
+```
+```
+skb-stg_rsa
+```
+```
+nGrinder Agent
+```
+```
+Dummy Headend
+```
+```
+175.113.150.8
+```
+```
+22
+```
+```
+agwdev
+```
+```
+g2api1!
+```
+```
+skb-dev-bastion_rsa
+```
+```
+bastion
+```
+||
+```
+10.10.214.211
+```
+```
+22
+```
+```
+root
+```
+```
+g2infra1!
+```
+```
+skb-stg_rsa
+```
+```
+dummy headend
+```
+||
+```
+10.10.214.212
+```
+```
+22
+```
+```
+root
+```
+```
+g2infra1!
+```
+```
+skb-stg_rsa
+```
+```
+dummy headend
+```
+||
+```
+10.10.214.213
+```
+```
+22
+```
+```
+root
+```
+```
+g2infra1!
+```
+```
+skb-stg_rsa
+```
+```
+dummy headend
+```
+||
+```
+10.10.214.214
+```
+```
+22
+```
+```
+root
+```
+```
+g2infra1!
+```
+```
+skb-stg_rsa
+```
+```
+dummy headend
+```
+||
+```
+10.10.214.215
+```
+```
+22
+```
+```
+root
+```
+```
+g2infra1!
+```
+```
+skb-stg_rsa
+```
+```
+dummy headend
+```

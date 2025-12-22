@@ -1,0 +1,59 @@
+산차쪽이 가장 먼저 사용할 곳
+ 
+MS  
+- AD  
+- VPN
+   
+
+Redhat  
+- AD 없는 상태로 설치된 것 데모  
+○ 금일 AD연동 예정?  
+○ Registry.d-platform.doosan.com 을 docker cli 로 로그인 가능…  
+§ 당연히…  
+○ docker-registry가 scaling 안되는데…  
+○ Hawkular도 설치했네…?  
+§ 아직은 둘 다 설치된다?  
+○ OpenJDK 8 로 spring boot APP 빌드  
+○ openshfit-logging  
+§ EFK ?  
+○ openshift-monitoring  
+§ alertmanager도 있네…  
+□ DeadmansSwitch - Prometheus 가 죽었나 확인 & alert  
+□ Slack 도 지원  
+§ Pod별 pv 사용량도 알 수 있다? 나중에 제공?  
+§ grafana-simple 은 뭐지?  
+○ 스토리지  
+§ oc get sc ## 스토리지 클래스 확인  
+§ 여러 pod 에서 접근할 때만 RWX  
+§ azure-disk는 할당되는 순간 과금…  
+§ 백업은 어떻게??  
+§ Standard_LRS 가 하드디스크, Premium 이 SSD. 가격이 2배 정도  
+○ ovs / sdn  
+§ ovs: openvswitch  
+□ 최근 버전에서 컨테이너화 됨.  
+□ 노드간 라우팅  
+○ Rpm 베이스였던 것들이 업그레이드 편의를 위해 컨테이너화  
+○ istio  
+§ 4.1 부터 GA 가능해서 지원 가능  
+§ 아직은 Tech Preview라 정식 지원안됨  
+§ Prometheus 를 백엔드로 사용?????  
+□ prometheus -\> istio -\> kiali ???  
+§ 이상이 있는 pod 에 ! 띄워서 알려주다가 red 로 변경…  
+§ Flow 컨트롤도 가능??  
+□ Yaml 파일을 이용해서  
+§ 코드레벨 변경 없이 적용
+ 
+○ Watch 로 간단하게 curl 무한 반복 되네… ㅎㅎ;;;  
+○ Metering  
+§ Project: openshift-metering  
+§ yaml  
+□ Kind: Report  
+§ oc create 또는 oc apply 로 적용  
+§ Yaml 확인 status가 finished  
+§ 시점 종점 지정하는게 좀 묘한 듯…  
+- PVC 크기 더 키워야 하는지 확인 (현재 1GB)  
+○ PV 리사이즈 지원 안하는지…  
+- OCP 설치 관련 리포트는 다음주 중에  
+- 차주 TODO?  
+- 두산측에서 내부 테스트 필요  
+○ 표면적으로는 특이사항 없어 보임

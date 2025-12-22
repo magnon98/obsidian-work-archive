@@ -1,0 +1,1 @@
+![[ec2_virginia_k8s.pem]]

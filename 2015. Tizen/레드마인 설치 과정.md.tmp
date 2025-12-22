@@ -1,0 +1,192 @@
+1. 기존 모듈 업데이트
+
+# yum update
+
+3. 재부팅
+
+# reboot
+
+5. dependency모듈 설치
+
+# yum -y install nano zip unzip libyaml-devel zlib-devel curl-devel openssl-devel httpd-devel apr-devel apr-util-devel mysql-devel gcc ruby-devel gcc-c++ make postgresql-devel ImageMagick-devel sqlite-devel perl-LDAP mod_perl perl-Digest-SHA
+
+7. Apache, MySQL설치
+
+# yum -y install httpd mysql mysql-server
+
+9. 서비스 등록
+
+# chkconfig httpd on￼# chkconfig mysqld on￼# service httpd start￼# service mysqld start
+
+11. MySQL 보안 설정
+
+# /usr/bin/mysql_secure_installation
+
+13. 필요에 따라 SELinux 설정 해제
+
+텍스트 에디터로 /etc/selinux/config 열어서 SELINUX=disabled 로 변경후 재부팅
+
+15. iptable 사용중인 경우
+    1. /etc/sysconfig/iptables를 에디터로 열어서 80번과 443번 등록
+    2. # etc/init.d/iptables restart
+    3. IPv6 사용중인 경우에는 ip6tables 에 대해서도 동일하게 적용
+16. PHP설치
+
+# yum -y install php php-mysql php-gd php-imap php-ldap php-mbstring php-odbc php-pear php-xml php-xmlrpc php-pecl-apc php-soap
+
+18. Apache restart
+19. phpMyAdmin 설치
+20. phpMyAdmin 디렉토리의 접근 설정 수정
+
+# vi /etc/httpd/conf.d/phpmyadmin.conf  
+혹은 버전에 따라 phpMyAdmin.conf 일 수도 있음.  
+\<Direcroty "/usr/share/phpmyadmin"\>  
+…  
+Allow from all  
+…  
+\</Directory\>
+
+22. phpMyAdmin의 인증방식을 cookie에서 http로 변경
+
+# vi /usr/share/phpmyadmin/config.inc.php  
+$cfg['Servers'][$i]['auth_type'] = 'http';
+
+24. SELinux 활성화된 상태인 경우 Apache 에서 접근할 수 있도록 권한 부여
+
+# chcon -R -h -t httpd_sys_content_t /usr/share/phpmyadmin
+
+26. Apache 리스타트
+
+# service http restart
+
+28. Ruby 설치 ( 라이브러리 버전을 많이 타기 때문에 버전에 주의 )
+    1. 설치 전 ruby 설치 여부 확인
+    
+    # ruby -v
+    
+    3. 설치된 ruby있으면 제거
+    
+    # yum uninstall ruby  
+    등등...
+    
+    5. rvm설치
+    
+    # \curl -L [https://get.rvm.io](https://get.rvm.io) | bash  
+    # source /etc/profile.d/rvm.sh
+    
+    7. Ruby 1.9.3 설치
+    
+    # rvm install 1.9.3
+    
+    9. Ruby 버전 확인
+    
+    # ruby -v
+    
+    11. Rubygems 설치
+    
+    # yum -y install rubygems
+    
+    13. Install passenger gem
+    
+    # gem install passenger  
+    # passenger-install-apache2-module \<-- 라이브러리 버전들이 안맞으면 이 과정에서 꼬이기 시작.
+    
+    15. 위 작업 완료 후 화면에 출력된 apache module 설정 정보를 복사
+    16. /etc/httpd/conf/httpd.conf 에 입력 또는 /etc/httpd/conf.d/passenger.conf 파일 생성해서 입력
+29. MySQL DB 및 계정 생성
+
+# mysql -u root -p  
+mysql\> create database redmine_db character set utf8;  
+mysql\> create user 'redmine_admin'@'#' identified by 'your_new_password';  
+mysql\> grant all privileges on *.* to 'redmine_admin'@'localhost';￼mysql\> quit;
+
+31. 레드마인 설치
+    1. 압축파일 다운로드 및 압축 해제
+    
+    # cd /var/www  
+    # wget [http://www.redmine.org/releases/redmine-2.5.0.tar.gz](http://www.redmine.org/releases/redmine-2.5.0.tar.gz)  
+    # tar xzf redmine-2.5.0.tar.gz  
+    # mv ./redmine-2.5.0 ./redmine  
+    # chown -R apache:apache ./redmine  
+    # chmod -R 755 ./redmine  
+    # rm -f redmine-2.5.0.tar.gz
+    
+    3. redmind db 설정파일 수정
+    
+    # cd /var/www/redmine/config  
+    # cp database.yml.example database.yml  
+    # vi database.yml
+    
+    5. Table name에 prefix를 설정하고 싶은 경우
+    
+    # cd /var/www/redmine/config  
+    # cp ./additional_environment.rb.example ./additional_environment.rb  
+    # vi additional_environment.rb  
+    아래의 내용 추가.  
+    config.active_record.table_name_prefix = '원하는 prefix'
+    
+      
+    
+    이 때 index name의 길이 제한(64)에 걸리지 않도록 prefix를 3글자 이하로 설정 필요.  
+    "redmine_" 으로 설정했을 때 index_redmine_custom_fields_projects_on_custom_field_id_and_project_id 가 제한에 걸려 이후 진행 불가.
+    
+      
+    
+32. Rails설정
+
+# cd /var/www/redmine  
+# gem install bundler  
+# bundle install \<--- 여기서도 라이브러리 버전이 안맞으면 에러 발생하고 더이상 진행 불가.  
+# rake generate_secret_token
+
+34. 초기 DB 정보 입력
+
+# RAILS_ENV=production rake db:migrate  
+# RAILS_ENV=production rake redmine:load_default_data
+
+36. Activate FCGI
+
+# cd /var/www/redmine/public￼# mkdir plugin_assets￼# cp dispatch.fcgi.example dispatch.fcgi￼# cp htaccess.fcgi.example .htaccess
+
+38. Setting up Apache and FastCGI
+
+# cd /var/www/￼# rpm --import [https://fedoraproject.org/static/0608B895.txt](https://fedoraproject.org/static/0608B895.txt)￼# wget [http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm](http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm)￼# rpm -ivh epel-release-6-8.noarch.rpm￼# yum -y install mod_fcgid￼# rm -rf epel-release-6-8.noarch.rpm
+
+40. Creating Files Directory
+
+# mkdir -p /opt/redmine/files￼# chown -R apache:apache /opt/redmine￼# cd /var/www/redmine/config￼# cp configuration.yml.example configuration.yml￼# vi configuration.yml  
+Attachments_storage_path: /opt/redmine/files 로 수정
+
+42. 메일서버 설정
+
+# vi /var/www/redmine/config/configuration.yml  
+email_delivery:항목을 적절히 수정…  
+Gmail을 사용하는 경우…  
+email_delivery:￼ delivery_method: :smtp￼ smtp_settings:￼ enable_starttls_auto: true￼ address: "smtp.gmail.com" ￼ port: 587￼ domain: "smtp.gmail.com" ￼ authentication: :plain￼ user_name: "your_email@gmail.com" ￼ password: "your_password"
+
+44. VirtualHost 설정
+
+/etc/httpd/conf/httpd.conf를 수정하거나,  
+/etc/httpd/conf.d/redmine.conf 를 생성해서 입력  
+반드시 redmine디렉토리 하위의 public을 지정해야 함.
+ 
+\<VirtualHost *:80\>￼ ServerName your_domain￼ ServerAdmin your_domain@domain.com￼ DocumentRoot /var/www/redmine/public/￼ ErrorLog logs/redmine_error_log￼ \<Directory "/var/www/redmine/public/"\>￼ Options Indexes ExecCGI FollowSymLinks￼ Order allow,deny￼ Allow from all￼ AllowOverride all￼ \</Directory\>￼\</VirtualHost\>
+
+48. 아파치 리스타트
+
+# service httpd restart
+
+-A INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT￼-A INPUT -m state --state NEW -m tcp -p tcp --dport 443 -j ACCEPT  
+# service httpd restart  
+또는  
+# systemctl restart  httpd.service  
+# rpm --import [http://dag.wieers.com/rpm/packages/RPM-GPG-KEY.dag.txt](http://dag.wieers.com/rpm/packages/RPM-GPG-KEY.dag.txt)  
+# yum install [http://pkgs.repoforge.org/rpmforge-release/rpmforge-release-0.5.3-1.el6.rf.x86_64.rpm](http://pkgs.repoforge.org/rpmforge-release/rpmforge-release-0.5.3-1.el6.rf.x86_64.rpm)￼# yum -y install phpmyadmin  
+production항목을 DB 정보에 맞게 수정  
+production:  
+  adapter: mysql2  
+  database: tizen  
+  host: localhost  
+  username: tizen  
+  password: "xkdlwps"  
+  encoding: utf8

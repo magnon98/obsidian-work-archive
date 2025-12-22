@@ -1,0 +1,95 @@
+```
+ALL // DEBUG // ERROR // FATAL // INFO // OFF // TRACE // WARN
+```
+    
+|
+|
+```
+컴포넌트
+```
+```
+AS-IS
+```
+```
+TO-BE
+```
+```
+Config File Location
+```
+```
+Cassandra
+```
+```
+INFO
+```
+|```<br>/opt/apigee/customer/application/cassandra.properties<br>```<br><br>  <br><br>```<br>conf_cassandra_replace_address_log_level=logging.WARN<br>```|
+```
+Zookeeper
+```
+```
+DEBUG
+```
+|```<br>/opt/apigee/customer/application/zookeeper.properties<br>```<br><br>  <br><br>```<br>conf_log4j_zookeeper.log.threshold=WARN<br>```|
+```
+LDAP
+```
+```
+-
+```
+||
+```
+Router
+```
+```
+INFO
+```
+|```<br>/opt/apigee/customer/application/router.properties  <br>   <br>conf_system_log.level=WARN<br>```|
+```
+Message Processor
+```
+```
+INFO
+```
+|```<br>/opt/apigee/customer/application/message-processor.properties<br>```<br><br>  <br><br>```<br>conf_system_log.level=WARN<br>```|
+```
+Management Server
+```
+```
+INFO
+```
+|```<br>/opt/apigee/customer/application/management-server.properties<br>```<br><br>  <br><br>```<br>conf_system_log.level=WARN<br>```|
+```
+Edge UI
+```
+```
+INFO
+```
+|```<br>/opt/apigee/customer/application/ui.properties<br>```<br><br>  <br><br>```<br>conf_logger_settings_application_log_level=WARN￼conf_logger_settings_play_log_level=WARN<br>```|
+```
+Qpid Server
+```
+```
+INFO
+```
+|```<br>/opt/apigee/customer/application/qpid-server.properties<br>```<br><br>  <br><br>```<br>conf_system_log.level=WARN<br>```|
+```
+Qpidd
+```
+```
+notice+
+```
+|```<br>/opt/apigee/customer/application/qpidd.properties<br>```<br><br>  <br><br>```<br>conf_qpidd_log-enable=warning+<br>```|
+```
+Postgres Server
+```
+```
+INFO
+```
+|```<br>/opt/apigee/customer/application/postgres-server.properties<br>```<br><br>  <br><br>```<br>conf_system_log.level=WARN<br>```|
+```
+PostgreSQL
+```
+```
+-
+```
+||

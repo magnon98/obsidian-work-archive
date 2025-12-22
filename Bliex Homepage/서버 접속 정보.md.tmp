@@ -1,0 +1,15 @@
+AWS  
+ID: aws+intra@exntu.com  
+PW: xn2+intra
+
+![[keypair-intra-default.pem]]
+
+Host bliex.www2  
+Hostname 13.124.140.176  
+User ec2-user  
+IdentityFile ~/.ssh/keypair-intra-default.pem
+ 
+Host bliex.www2-demo  
+Hostname 52.78.213.60  
+User ubuntu  
+IdentityFile ~/.ssh/keypair-intra-default.pem

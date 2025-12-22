@@ -1,0 +1,17 @@
+[https://master.kbos.local:8443/](https://master.kbos.local:8443/) bliex // bliex
+ 
+[https://sso-rhsso.apps.kbos.local/auth/admin/](https://sso-rhsso.apps.kbos.local/auth/admin/) admin // Goodmit1!
+ 
+==https://3scale-admin.amp.apps.kbos.local/== ==admin // Goodmit1!==
+ 
+### GIT VPN - OCP  
+10.161.1.111 master.kbos.local  
+10.161.1.112 node01.kbos.local  
+10.161.1.113 node02.kbos.local  
+10.161.1.114 infra01.kbos.local  
+10.161.1.111 console.apps.kbos.local
+ 
+10.161.1.114 sso-rhsso.apps.kbos.local  
+10.161.1.114 3scale-admin.amp.apps.kbos.local  
+10.161.1.114 sample-api-3scale-apicast-staging.amp.apps.kbos.local  
+10.161.1.114 sample-api-3scale-apicast-production.amp.apps.kbos.local

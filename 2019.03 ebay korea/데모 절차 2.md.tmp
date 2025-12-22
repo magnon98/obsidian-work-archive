@@ -1,0 +1,55 @@
+```
+1. Create Service  
+- Name: Jarvis Proxy 01  
+- System Name: jarvis-proxy01
+```
+    
+```
+2. Create Application Plan  
+- Name: Basic  
+- System Name: basic
+```
+ 
+```
+- Publish
+```
+    
+```
+3. Create Application  
+- Developers --\> Developer --\> n Applicaitons --\> Create Application  
+- Application Plan: Jarvis Proxy01 --\> Basic  
+- Name: Jarvis Proxy Application  
+- Description: Jarvis Proxy Application
+```
+    
+```
+4. Configure APICast  
+- APIs --\> Jarvis Proxy01 --\> Configure APICast  
+- Private Base URL: [http://api-platform-test-jarvis.i1.ebaykorea.com](http://api-platform-test-jarvis.i1.ebaykorea.com)  
+- Public Base URL: (default)
+```
+ 
+```
+- Mapping Rules  
+- GET: /  
+- POST: /service/match
+```
+ 
+```
+- Authentication Settings  
+- Credential Location: query string  
+- Key: user_key
+```
+ 
+```
+- Policies  
+- CORS
+```
+      
+
+```
+curl -X POST \  
+  [http://api-platform-test-jarvis.i1.ebaykorea.com/service/match](http://api-platform-test-jarvis.i1.ebaykorea.com/service/match) \  
+  -H 'Content-Type: application/json' \  
+  -d '{"data": {"req001": {"item_name": "루이비통 테스트"},"req002": {"item_name": "루이비통 테스트222"}}}'
+```

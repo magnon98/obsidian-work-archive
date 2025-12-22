@@ -1,0 +1,1 @@
+hosts 에 magnonoutlook.onmicrosoft.com 설정 추가됨.

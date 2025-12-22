@@ -1,0 +1,69 @@
+1. DB sql반영  
+mysql\> create database tizen_db;  
+mysql\> quit
+ 
+$ mysql -u root -p -h localhost tizen_db \< tizen_db.mysql
+ 
+import속도가 느린 경우 /etc/my.cnf 의 [mysqld] 섹션에 아래의 내용 추가  
+max_allowed_packet = 128M  
+key_buffer=1000M  
+bulk_insert_buffer_size=512M  
+innodb_doublewrite=0  
+innodb_flush_log_at_trx_commit=2
+
+2. git에서 소스 clone  
+$ cd /var/www  
+$ mkdir tizen_org  
+$ cd tizen_org  
+$ git clone git@github.com:otcshare/tizen.org.git
+   
+
+clone을 하기 위해서는 openssl 키를 생성해서 github사이트에 등록해야 함. ([https://help.github.com/articles/generating-ssh-keys/](https://help.github.com/articles/generating-ssh-keys/))
+
+3. drupal설정파일 생성 및 수정  
+github에서 clone한 디렉토리로 이동  
+$ cd docroot/sites/default  
+$ cp ./tizen.settings.php ./settings.php  
+$ chown apache:apache ./settings.php  
+$ chmod 744 ./settings.php  
+$ vi ./settings.php
+ 
+# $conf['tizen_site'] = TIZEN_DEVELOPER; --\> 주석 해제
+ 
+DB 접속정보 추가  
+$databases['default']['default'] = array(  
+'driver' =\> 'mysql',  
+'database' =\> 'databasename',  
+'username' =\> 'username',  
+'password' =\> 'password',  
+'host' =\> 'localhost',  
+'prefix' =\> '',  
+);
+ 
+#$conf['file_public_path'] = 'sites/[your site]/files';  
+--\> $conf['file_public_path'] = 'sites/default/files';  
+로 변경
+ 
+#$conf['file_temporary_path'] = '/tmp';  
+--\> $conf['file_temporary_path'] = 'sites/default/tmp';  
+로 변경
+ 
+$ mkdir tmp  
+$ chown apache:apache ./tmp  
+$ chmod 744 ./tmp
+   
+
+5. Simple LDAP 제거
+ 
+$ drush --user=1 dis simple_ldap -y￼  
+$ drush updb -y￼$ drush cc all  
+$ drush pm-uninstall simple_ldap_sso -y￼$ drush pm-uninstall simple_ldap_user -y￼$ drush pm-uninstall simple_ldap -y
+   
+
+$ vi sites/all/includes/ldap.inc  
+기존 내용 모두 지우고 아래 내용 입력
+ 
+$conf['session_inc'] = 'includes/session.inc';￼$conf['password_inc'] = 'includes/password.inc';
+
+4. Apache 리스타트  
+$ service httpd restart
