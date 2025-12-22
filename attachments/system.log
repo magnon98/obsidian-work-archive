@@ -1,0 +1,770 @@
+2021-11-02 17:29:00,599  main INFO  KERNEL - MicroKernel.initInternals() : MicroKernel start initiated...
+2021-11-02 17:29:00,603  main INFO  KERNEL - MicroKernel.logJavaAndOSProperties() : Java/OS Properties - {java.ext.dirs=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.312.b07-1.el7_9.x86_64/jre/lib/ext:/usr/java/packages/lib/ext, java.runtime.name=OpenJDK Runtime Environment, java.runtime.version=1.8.0_312-b07, java.specification.version=1.8, java.vendor=Red Hat, Inc., java.security.nssprovider.enabled=false, java.class.version=52.0, java.vendor.url=https://www.redhat.com/, java.specification.name=Java Platform API Specification, java.security.auth.login.config=/opt/apigee/edge-message-processor-4.51.00-0.0.60142/conf/jaas.config, java.awt.printerjob=sun.print.PSPrinterJob, java.net.preferIPv4Stack=true, os.arch=amd64, java.vm.version=25.312-b07, os.name=Linux, java.home=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.312.b07-1.el7_9.x86_64/jre, os.version=3.10.0-1160.45.1.el7.x86_64, java.endorsed.dirs=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.312.b07-1.el7_9.x86_64/jre/lib/endorsed, java.version=1.8.0_312, java.awt.graphicsenv=sun.awt.X11GraphicsEnvironment, java.vm.specification.version=1.8, java.vendor.url.bug=https://bugzilla.redhat.com/enter_bug.cgi?product=Red%20Hat%20Enterprise%20Linux%207&component=java-1.8.0-openjdk, java.vm.specification.name=Java Virtual Machine Specification, java.specification.vendor=Oracle Corporation, java.vm.vendor=Red Hat, Inc., java.vm.info=mixed mode, java.library.path=/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib, java.security.properties=/opt/apigee/edge-message-processor/conf/jvmsecurity.properties, java.vm.name=OpenJDK 64-Bit Server VM, java.vm.specification.vendor=Oracle Corporation, java.io.tmpdir=/var/tmp}
+
+2021-11-02 17:29:00,704  main INFO  KERNEL.CONFIG - KernelConfiguration.loadKernelProperties() : KernelConfiguration.loadKernelProperties() : MicroKernel properties : {checkmarx.scan.validator.enabled=true, profile=message-processor, skip.tenantid_index=true, java.security.properties=/opt/apigee/edge-message-processor/conf/jvmsecurity.properties, json.deserializer.ignore.unmapped.properties=true, datastax.loadTokenToHostMappingForKeyspaces=false, jsse.enableSNIExtension=false, jute.maxbuffer=10485750, java.io.tmpdir=/var/tmp, has.monetization=${microkernel_hasMonetization}, cwc_pod=default, hermes.nonbatch=false, qpid.session.command_limit=524288, com.warrenstrange.googleauth.rng.algorithm=SHA1PRNG, strict.target.validations.enabled=false, apigee.syslogger.dateFormat={T}conf_system_apigee.syslogger.dateFormat{/T}, default.response.format=json, flogger.backend_factory=com.apigee.flogger.Slf4jBackendFactory#getInstance, java.net.preferIPv4Stack=true, rbac.number.of.tries.for.email.search=1, async.parser.log.level=OFF, jdk.tls.allowUnsafeServerCertChange=true, astyanax.datastores=taurus-datastore,kms-datastore,dc-datastore,cache-datastore,counter-datastore,keyvaluemap-datastore,application-datastore,audit-datastore,apimodel-datastore,auth-datastore,scheduler-datastore,edgenotification-datastore, javax.xml.xpath.XPathFactory=http://java.sun.com/jaxp/xpath/dom=org.apache.xpath.jaxp.XPathFactoryImpl, migration.mode.status=false, useG1GC=false, javax.xml.transform.TransformerFactory=net.sf.saxon.TransformerFactoryImpl, useStringDeduplication=false, qpid.session.byte_limit=8388608, lib.dir.name=lib/infra/services,lib/gateway/services,lib/gateway/steps,../edge-analytics/lib/analytics/services, sun.net.maxDatagramSockets=2048, syslog.multiline.support=false, checkmarx.scan.validator.epochtimestampmillis=0, jdk.tls.maxHandshakeMessageSize=131072, pod=gateway, com.warrenstrange.googleauth.rng.algorithmProvider=SUN, extractvariable.xpath.unresolved.check.enabled=true, casssandra.maxConnectTimeInMillis=-1, com.datastax.driver.CHECK_IO_DEADLOCKS=false, setCodeCache=false, json.request.schema.validation.enabled=true, license.file.location=/opt/apigee/customer/conf/license.txt, log.level=INFO, checkmarx.scan.validator.newentity.enabled={T}conf_system_checkmarx.scan.validator.newentity.enabled{/T}, com.datastax.driver.USE_NATIVE_CLOCK=false, cql.datastores=dek-datastore,identityzone-datastore, validation.entity.name.enabled=true, shutdownServicesOnStop=true, region=dc-1, python.verbose=error, bundle.validation.enabled=false, authenticated.user.header.name=X-Apigee-Current-User, revokeoauthv2.policy.validate=true, javacallout.policy.validate=false, qpid.push.intelligence.vars=false, java.security.nssprovider.enabled=false, org.apache.commons.logging.Log=org.apache.commons.logging.impl.NoOpLog}
+2021-11-02 17:29:01,190  main ERROR KERNEL - MicroKernel.scanDeployments() : Some modules and services were present in the profile but not in the class path
+2021-11-02 17:29:01,191  main ERROR KERNEL - MicroKernel.scanDeployments() : Missing modules: []
+2021-11-02 17:29:01,191  main ERROR KERNEL - MicroKernel.scanDeployments() : Missing services: [NodeScriptService]
+2021-11-02 17:29:01,191  main ERROR KERNEL - MicroKernel.scanDeployments() : Not exiting this time but continuing anyway.
+2021-11-02 17:29:01,196  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : FeatureFlagService has these dependencies [ [NameRegistration{name=ZooKeeperService}] ]
+2021-11-02 17:29:01,204  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : HttpClientService has these dependencies [ [NameRegistration{name=ComponentConfigurationService}] ]
+2021-11-02 17:29:01,219  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : ZooKeeperService has these dependencies [ [NameRegistration{name=MachineKeyService}] ]
+2021-11-02 17:29:01,221  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : HTTPTransport has these dependencies [ [NameRegistration{name=CommunicationService}, NameRegistration{name=ComponentConfigurationService}, NameRegistration{name=ServerMetricsService}] ]
+2021-11-02 17:29:01,226  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : DeploymentStatusService has these dependencies [ [NameRegistration{name=RepositoryService}, NameRegistration{name=ComponentConfigurationService}] ]
+2021-11-02 17:29:01,228  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : ConfigStoreService has these dependencies [ [NameRegistration{name=ServerBindService}, NameRegistration{name=RepositoryService}, NameRegistration{name=HttpClientService}, NameRegistration{name=ComponentConfigurationService}] ]
+2021-11-02 17:29:01,234  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : ServerMetricsService has these dependencies [ [NameRegistration{name=CommunicationService}] ]
+2021-11-02 17:29:01,234  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : MetricsService has these dependencies [ [NameRegistration{name=CommunicationService}] ]
+2021-11-02 17:29:01,235  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : TimeSeriesCounterService has these dependencies [ [NameRegistration{name=ServerRegistrationService}, NameRegistration{name=MetricsService}, NameRegistration{name=DataStoreService}] ]
+2021-11-02 17:29:01,372  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : DEKService has these dependencies [ [NameRegistration{name=ServerRegistrationService}] ]
+2021-11-02 17:29:01,372  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : AccessControl has these dependencies [ [NameRegistration{name=CacheService}] ]
+2021-11-02 17:29:01,378  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : DebugService has these dependencies [ [NameRegistration{name=CommunicationService}] ]
+2021-11-02 17:29:01,379  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : CommunicationService has these dependencies [ [NameRegistration{name=WebService}] ]
+2021-11-02 17:29:01,380  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : QuotaService has these dependencies [ [NameRegistration{name=TimeSeriesCounterService}] ]
+2021-11-02 17:29:01,385  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : AuthenticationService has these dependencies [ [NameRegistration{name=CommunicationService}, NameRegistration{name=CacheService}, NameRegistration{name=ServerRegistrationService}, NameRegistration{name=DataStoreService}, NameRegistration{name=HttpClientService}] ]
+2021-11-02 17:29:01,385  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : UserService has these dependencies [ [NameRegistration{name=CommunicationService}, NameRegistration{name=CacheService}, NameRegistration{name=ServerRegistrationService}, NameRegistration{name=DataStoreService}] ]
+2021-11-02 17:29:01,385  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : ResourceService has these dependencies [ [NameRegistration{name=CommunicationService}, NameRegistration{name=CacheService}, NameRegistration{name=ServerRegistrationService}, NameRegistration{name=DataStoreService}] ]
+2021-11-02 17:29:01,386  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : RepositoryService has these dependencies [ [NameRegistration{name=ZooKeeperService}, NameRegistration{name=DataStoreService}, NameRegistration{name=ServerMetricsService}] ]
+2021-11-02 17:29:01,386  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : ClusterService has these dependencies [ [NameRegistration{name=ServerRegistrationService}, NameRegistration{name=CommunicationService}, NameRegistration{name=ServerBindObserverService}, NameRegistration{name=ZooKeeperService}, NameRegistration{name=MetricsService}] ]
+2021-11-02 17:29:01,387  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : QueueClientService has these dependencies [ [NameRegistration{name=ServerRegistrationService}, NameRegistration{name=MetricsService}] ]
+2021-11-02 17:29:01,387  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : CacheService has these dependencies [ [NameRegistration{name=EventService}, NameRegistration{name=ClusterService}, NameRegistration{name=MetricsService}, NameRegistration{name=DataStoreService}, NameRegistration{name=CpsRuntimeService}, NameRegistration{name=HttpClientService}] ]
+2021-11-02 17:29:01,396  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : ServerBindService has these dependencies [ [NameRegistration{name=ServerRegistrationService}] ]
+2021-11-02 17:29:01,397  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : ServerBindObserverService has these dependencies [ [NameRegistration{name=ServerRegistrationService}] ]
+2021-11-02 17:29:01,397  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : FeatureService has these dependencies [ [NameRegistration{name=OrganizationService}] ]
+2021-11-02 17:29:01,403  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : LogService has these dependencies [ [NameRegistration{name=CommunicationService}] ]
+2021-11-02 17:29:01,405  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.init() : ServiceDeployer.init() : Initializing service : MachineKeyService that implements InitializeAwareService
+2021-11-02 17:29:01,408  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.init() : ServiceDeployer.init() : Successfully initialized the service : MachineKeyService
+2021-11-02 17:29:01,408  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : ZooKeeperService has these dependencies [ [NameRegistration{name=MachineKeyService}] ]
+2021-11-02 17:29:01,408  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.init() : ServiceDeployer.init() : Initializing service : ZooKeeperService that implements InitializeAwareService
+2021-11-02 17:29:01,468  main INFO  o.a.c.utils.Compatibility - Compatibility.<clinit>() : Running in ZooKeeper 3.4.x compatibility mode
+2021-11-02 17:29:01,469  main INFO  o.a.c.utils.Compatibility - Compatibility.<clinit>() : Using emulated InjectSessionExpiration
+2021-11-02 17:29:01,503  main INFO  o.a.c.f.i.CuratorFrameworkImpl - CuratorFrameworkImpl.start() : Starting
+2021-11-02 17:29:01,533  main INFO  o.a.c.f.i.CuratorFrameworkImpl - CuratorFrameworkImpl.start() : Default schema
+2021-11-02 17:29:01,538  main-EventThread ERROR o.a.c.ConnectionState - ConnectionState.checkState() : Authentication failed
+2021-11-02 17:29:01,540  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.init() : ServiceDeployer.init() : Successfully initialized the service : ZooKeeperService
+2021-11-02 17:29:01,541  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : FeatureFlagService has these dependencies [ [NameRegistration{name=ZooKeeperService}] ]
+2021-11-02 17:29:01,542  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : RepositoryService has these dependencies [ [NameRegistration{name=ZooKeeperService}, NameRegistration{name=DataStoreService}, NameRegistration{name=ServerMetricsService}] ]
+2021-11-02 17:29:01,542  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.init() : ServiceDeployer.init() : Initializing service : RepositoryService that implements InitializeAwareService
+2021-11-02 17:29:01,552  main-EventThread INFO  o.a.c.f.s.ConnectionStateManager - ConnectionStateManager.postState() : State change: CONNECTED
+2021-11-02 17:29:01,576  main INFO  SERVICES.REPOSITORY - RepositoryServiceImpl.initRepository() : repository name=apprepo is using class=com.apigee.services.repository.nosql.CassandraRepository
+2021-11-02 17:29:01,577  main INFO  SERVICES.REPOSITORY - RepositoryServiceImpl.initRepository() : repository name=zookeeper is using class=com.apigee.services.repository.zookeeper.ZKRepository
+2021-11-02 17:29:01,579  main INFO  SERVICES.REPOSITORY - RepositoryServiceImpl.initRepository() : repository name=localrepo is using class=com.apigee.services.repository.filesystem.FileSystemRepository
+2021-11-02 17:29:01,593  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.init() : ServiceDeployer.init() : Successfully initialized the service : RepositoryService
+2021-11-02 17:29:01,593  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : DeploymentStatusService has these dependencies [ [NameRegistration{name=RepositoryService}, NameRegistration{name=ComponentConfigurationService}] ]
+2021-11-02 17:29:01,595  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : CpsRuntimeService has these dependencies [ [NameRegistration{name=CommunicationService}, NameRegistration{name=ServerRegistrationService}, NameRegistration{name=ServerBindService}, NameRegistration{name=OrganizationService}] ]
+2021-11-02 17:29:01,595  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : ComponentConfigurationService has these dependencies [ [NameRegistration{name=CommunicationService}] ]
+2021-11-02 17:29:01,595  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : SecurityService has these dependencies [ [NameRegistration{name=CommunicationService}, NameRegistration{name=RepositoryService}, NameRegistration{name=EventService}, NameRegistration{name=UserService}, NameRegistration{name=ResourceService}, NameRegistration{name=HttpClientService}] ]
+2021-11-02 17:29:01,609  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : EncryptionKeyService has these dependencies [ [NameRegistration{name=CommunicationService}, NameRegistration{name=RepositoryService}] ]
+2021-11-02 17:29:01,609  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.init() : ServiceDeployer.init() : Initializing service : EventService that implements InitializeAwareService
+2021-11-02 17:29:01,609  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.init() : ServiceDeployer.init() : Successfully initialized the service : EventService
+2021-11-02 17:29:01,609  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : CacheService has these dependencies [ [NameRegistration{name=EventService}, NameRegistration{name=ClusterService}, NameRegistration{name=MetricsService}, NameRegistration{name=DataStoreService}, NameRegistration{name=CpsRuntimeService}, NameRegistration{name=HttpClientService}] ]
+2021-11-02 17:29:01,613  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : OrganizationService has these dependencies [ [NameRegistration{name=CommunicationService}, NameRegistration{name=RepositoryService}] ]
+2021-11-02 17:29:01,613  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : StorageService has these dependencies [ [NameRegistration{name=RepositoryService}, NameRegistration{name=FeatureService}] ]
+2021-11-02 17:29:01,614  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : DataStoreService has these dependencies [ [NameRegistration{name=ComponentConfigurationService}] ]
+2021-11-02 17:29:01,614  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.init() : ServiceDeployer.init() : Initializing service : WebService that implements InitializeAwareService
+2021-11-02 17:29:01,637  main WARN  THREADPOOL_MANAGER - ThreadPoolManager.getIntValue() : Invalid value null for property script.pool.size, applying default value 10
+2021-11-02 17:29:01,638  main WARN  THREADPOOL_MANAGER - ThreadPoolManager.getLongValue() : Invalid value null for property keepalive.time, applying default value 60000
+2021-11-02 17:29:01,638  main WARN  THREADPOOL_MANAGER - ThreadPoolManager.getIntValue() : Invalid value null for property timer.pool.size, applying default value 10
+2021-11-02 17:29:01,638  main INFO  THREADPOOL_MANAGER - ThreadPoolManager.<init>() : Capacity Threshold set to 300. Low water mark 250
+2021-11-02 17:29:01,638  main WARN  THREADPOOL_MANAGER - ThreadPoolManager.getIntValue() : Invalid value null for property javascript.pool.percent, applying default value 30
+2021-11-02 17:29:01,714  main INFO  REST - Container.getConnectors() : Container.getConnectors() - Serving http and http2 on port - 8082
+2021-11-02 17:29:01,761  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.init() : ServiceDeployer.init() : Successfully initialized the service : WebService
+2021-11-02 17:29:01,761  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : CommunicationService has these dependencies [ [NameRegistration{name=WebService}] ]
+2021-11-02 17:29:01,762  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.init() : ServiceDeployer.init() : Initializing service : CommunicationService that implements InitializeAwareService
+2021-11-02 17:29:01,769  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.init() : ServiceDeployer.init() : Successfully initialized the service : CommunicationService
+2021-11-02 17:29:01,769  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : HTTPTransport has these dependencies [ [NameRegistration{name=CommunicationService}, NameRegistration{name=ComponentConfigurationService}, NameRegistration{name=ServerMetricsService}] ]
+2021-11-02 17:29:01,772  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : ServerMetricsService has these dependencies [ [NameRegistration{name=CommunicationService}] ]
+2021-11-02 17:29:01,773  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : MetricsService has these dependencies [ [NameRegistration{name=CommunicationService}] ]
+2021-11-02 17:29:01,773  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : DebugService has these dependencies [ [NameRegistration{name=CommunicationService}] ]
+2021-11-02 17:29:01,777  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : LogService has these dependencies [ [NameRegistration{name=CommunicationService}] ]
+2021-11-02 17:29:01,780  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : ComponentConfigurationService has these dependencies [ [NameRegistration{name=CommunicationService}] ]
+2021-11-02 17:29:01,780  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : SecurityService has these dependencies [ [NameRegistration{name=CommunicationService}, NameRegistration{name=RepositoryService}, NameRegistration{name=EventService}, NameRegistration{name=UserService}, NameRegistration{name=ResourceService}, NameRegistration{name=HttpClientService}] ]
+2021-11-02 17:29:01,782  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : EncryptionKeyService has these dependencies [ [NameRegistration{name=CommunicationService}, NameRegistration{name=RepositoryService}] ]
+2021-11-02 17:29:01,793  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : OrganizationService has these dependencies [ [NameRegistration{name=CommunicationService}, NameRegistration{name=RepositoryService}] ]
+2021-11-02 17:29:01,793  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : ServerRegistrationService has these dependencies [ [NameRegistration{name=RepositoryService}, NameRegistration{name=CommunicationService}, NameRegistration{name=ComponentConfigurationService}, NameRegistration{name=ServerMetricsService}] ]
+2021-11-02 17:29:01,794  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.init() : ServiceDeployer.init() : Initializing service : ServerRegistrationService that implements InitializeAwareService
+2021-11-02 17:29:01,826  main INFO  REGISTRATION - ServerRegistrationServiceImpl.initResolutionScopes() : server types [scheduler-datastore, audit-datastore, hybrid-runtime, mint-rdbms-datastore, kms-datastore, dc-datastore, application-datastore, postgres-server, configstore-service, counter-datastore, local-intelligence-server, user-settings-datastore, unknown, analytics-datastore, router, endpoint, consumer-server, hybrid-mock-server, ldap, message-processor, edgenotification-datastore, hybrid-csr, dw-server, ingest-server, qpid-server, cache-datastore, hybrid-mart-server, zookeeper, apimodel-datastore, mart-server, taurus-datastore, keyvaluemap-datastore, storage-service, notification-datastore, mint-datastore, ax-hadoop-ingester, hybrid-synchronizer, management-server, identityzone-datastore, reportcrud-datastore, auth-datastore]
+2021-11-02 17:29:01,828  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.init() : ServiceDeployer.init() : Successfully initialized the service : ServerRegistrationService
+2021-11-02 17:29:01,828  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : TimeSeriesCounterService has these dependencies [ [NameRegistration{name=ServerRegistrationService}, NameRegistration{name=MetricsService}, NameRegistration{name=DataStoreService}] ]
+2021-11-02 17:29:01,828  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : DEKService has these dependencies [ [NameRegistration{name=ServerRegistrationService}] ]
+2021-11-02 17:29:01,833  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : AuthenticationService has these dependencies [ [NameRegistration{name=CommunicationService}, NameRegistration{name=CacheService}, NameRegistration{name=ServerRegistrationService}, NameRegistration{name=DataStoreService}, NameRegistration{name=HttpClientService}] ]
+2021-11-02 17:29:01,836  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : UserService has these dependencies [ [NameRegistration{name=CommunicationService}, NameRegistration{name=CacheService}, NameRegistration{name=ServerRegistrationService}, NameRegistration{name=DataStoreService}] ]
+2021-11-02 17:29:01,836  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : ResourceService has these dependencies [ [NameRegistration{name=CommunicationService}, NameRegistration{name=CacheService}, NameRegistration{name=ServerRegistrationService}, NameRegistration{name=DataStoreService}] ]
+2021-11-02 17:29:01,836  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : ClusterService has these dependencies [ [NameRegistration{name=ServerRegistrationService}, NameRegistration{name=CommunicationService}, NameRegistration{name=ServerBindObserverService}, NameRegistration{name=ZooKeeperService}, NameRegistration{name=MetricsService}] ]
+2021-11-02 17:29:01,847  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : QueueClientService has these dependencies [ [NameRegistration{name=ServerRegistrationService}, NameRegistration{name=MetricsService}] ]
+2021-11-02 17:29:01,850  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : ServerBindService has these dependencies [ [NameRegistration{name=ServerRegistrationService}] ]
+2021-11-02 17:29:01,852  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.init() : ServiceDeployer.init() : Initializing service : ServerBindService that implements InitializeAwareService
+2021-11-02 17:29:01,854  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.init() : ServiceDeployer.init() : Successfully initialized the service : ServerBindService
+2021-11-02 17:29:01,854  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : ConfigStoreService has these dependencies [ [NameRegistration{name=ServerBindService}, NameRegistration{name=RepositoryService}, NameRegistration{name=HttpClientService}, NameRegistration{name=ComponentConfigurationService}] ]
+2021-11-02 17:29:01,856  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : ServerBindObserverService has these dependencies [ [NameRegistration{name=ServerRegistrationService}] ]
+2021-11-02 17:29:01,856  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : CpsRuntimeService has these dependencies [ [NameRegistration{name=CommunicationService}, NameRegistration{name=ServerRegistrationService}, NameRegistration{name=ServerBindService}, NameRegistration{name=OrganizationService}] ]
+2021-11-02 17:29:01,856  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : HostedTargetService has these dependencies [ [NameRegistration{name=RepositoryService}, NameRegistration{name=KeyValueMapService}, NameRegistration{name=HttpClientService}] ]
+2021-11-02 17:29:01,861  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : RuntimeConfigurationService has these dependencies [ [NameRegistration{name=ComponentConfigurationService}, NameRegistration{name=CommunicationService}, NameRegistration{name=MessageProcessorService}, NameRegistration{name=SenseService}, NameRegistration{name=RepositoryService}, NameRegistration{name=LogService}, NameRegistration{name=APIClassificationService}, NameRegistration{name=ConfigStoreService}] ]
+2021-11-02 17:29:01,880  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : APIClassificationService has these dependencies [ [NameRegistration{name=ComponentConfigurationService}, NameRegistration{name=CommunicationService}, NameRegistration{name=ServerBindService}, NameRegistration{name=LogService}, NameRegistration{name=ServerMetricsService}] ]
+2021-11-02 17:29:01,890  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : SecureStoreService has these dependencies [ [NameRegistration{name=CommunicationService}, NameRegistration{name=KeyValueMapService}, NameRegistration{name=DataStoreService}] ]
+2021-11-02 17:29:02,161  main INFO  c.a.u.CredentialUtilInternal - CredentialUtilInternal.<init>() : Loading keys from keystore vault file
+2021-11-02 17:29:02,194  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : CollectionService has these dependencies [ [NameRegistration{name=MetricsService}] ]
+2021-11-02 17:29:02,198  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : OAuth2RuntimeService has these dependencies [ [NameRegistration{name=KeyManagementService}] ]
+2021-11-02 17:29:02,204  main INFO  K.DATASTORE.NOSQL - EntityCache.<clinit>() : Default KMS entity cache TTL set to 3
+2021-11-02 17:29:02,205  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : OAuthV2Service has these dependencies [ [NameRegistration{name=OAuth2RuntimeService}] ]
+2021-11-02 17:29:02,208  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : WebsocketOAuthService has these dependencies [ [NameRegistration{name=KeyManagementService}] ]
+2021-11-02 17:29:02,215  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : KeyManagementService has these dependencies [ [NameRegistration{name=CommunicationService}, NameRegistration{name=ServerRegistrationService}, NameRegistration{name=CacheService}, NameRegistration{name=DataStoreService}] ]
+2021-11-02 17:29:02,215  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : OAuth1RuntimeService has these dependencies [ [NameRegistration{name=KeyManagementService}] ]
+2021-11-02 17:29:02,218  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : KMSOrganizationService has these dependencies [ [NameRegistration{name=KeyManagementService}, NameRegistration{name=ServerBindService}] ]
+2021-11-02 17:29:02,219  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : ApiProductService has these dependencies [ [NameRegistration{name=KeyManagementService}] ]
+2021-11-02 17:29:02,221  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : AppService has these dependencies [ [NameRegistration{name=KeyManagementService}, NameRegistration{name=DEKService}] ]
+2021-11-02 17:29:02,234  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : DeveloperService has these dependencies [ [NameRegistration{name=CommunicationService}, NameRegistration{name=ServerRegistrationService}, NameRegistration{name=KMSOrganizationService}, NameRegistration{name=DataStoreService}] ]
+2021-11-02 17:29:02,241  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : RateLimit has these dependencies [ [NameRegistration{name=CacheService}] ]
+2021-11-02 17:29:02,242  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : EnvoyProxyService has these dependencies [ [NameRegistration{name=HttpClientService}] ]
+2021-11-02 17:29:02,250  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : MessageProcessorService has these dependencies [ [NameRegistration{name=ComponentConfigurationService}, NameRegistration{name=CommunicationService}, NameRegistration{name=RepositoryService}, NameRegistration{name=ServerRegistrationService}, NameRegistration{name=CacheService}, NameRegistration{name=ServerMetricsService}, NameRegistration{name=APIClassificationService}, NameRegistration{name=HTTPTransport}, InterfaceRegistration{interfaceClass=interface com.apigee.storage.StorageService}, NameRegistration{name=GeoIPService}] ]
+2021-11-02 17:29:02,256  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : SenseService has these dependencies [ [NameRegistration{name=ZooKeeperService}, NameRegistration{name=ServerRegistrationService}, NameRegistration{name=FeatureService}, NameRegistration{name=ServerMetricsService}] ]
+2021-11-02 17:29:02,259  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : EdgeMicroService has these dependencies [ [NameRegistration{name=RepositoryService}, NameRegistration{name=CollectionService}, NameRegistration{name=KeyValueMapService}, NameRegistration{name=ServerBindService}] ]
+2021-11-02 17:29:02,261  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : KeyValueMapService has these dependencies [ [NameRegistration{name=CommunicationService}, NameRegistration{name=ServerRegistrationService}, NameRegistration{name=KeyManagementService}, NameRegistration{name=DataStoreService}] ]
+2021-11-02 17:29:02,262  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : LegacyKeyValueMapService has these dependencies [ [NameRegistration{name=CommunicationService}, NameRegistration{name=ServerRegistrationService}, NameRegistration{name=KeyManagementService}, NameRegistration{name=DataStoreService}] ]
+2021-11-02 17:29:02,265  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : CpsKeyValueMapService has these dependencies [ [NameRegistration{name=CommunicationService}, NameRegistration{name=ServerRegistrationService}, NameRegistration{name=KeyManagementService}, NameRegistration{name=DataStoreService}] ]
+2021-11-02 17:29:02,268  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : FeatureFlagService has these dependencies [ [NameRegistration{name=ZooKeeperService}] ]
+2021-11-02 17:29:02,268  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : HttpClientService has these dependencies [ [NameRegistration{name=ComponentConfigurationService}] ]
+2021-11-02 17:29:02,269  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : ZooKeeperService has these dependencies [ [NameRegistration{name=MachineKeyService}] ]
+2021-11-02 17:29:02,269  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : HTTPTransport has these dependencies [ [NameRegistration{name=CommunicationService}, NameRegistration{name=ComponentConfigurationService}, NameRegistration{name=ServerMetricsService}] ]
+2021-11-02 17:29:02,269  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : DeploymentStatusService has these dependencies [ [NameRegistration{name=RepositoryService}, NameRegistration{name=ComponentConfigurationService}] ]
+2021-11-02 17:29:02,269  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : ConfigStoreService has these dependencies [ [NameRegistration{name=ServerBindService}, NameRegistration{name=RepositoryService}, NameRegistration{name=HttpClientService}, NameRegistration{name=ComponentConfigurationService}] ]
+2021-11-02 17:29:02,269  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : ServerMetricsService has these dependencies [ [NameRegistration{name=CommunicationService}] ]
+2021-11-02 17:29:02,269  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : MetricsService has these dependencies [ [NameRegistration{name=CommunicationService}] ]
+2021-11-02 17:29:02,269  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : TimeSeriesCounterService has these dependencies [ [NameRegistration{name=ServerRegistrationService}, NameRegistration{name=MetricsService}, NameRegistration{name=DataStoreService}] ]
+2021-11-02 17:29:02,270  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : DEKService has these dependencies [ [NameRegistration{name=ServerRegistrationService}] ]
+2021-11-02 17:29:02,270  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : AccessControl has these dependencies [ [NameRegistration{name=CacheService}] ]
+2021-11-02 17:29:02,270  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : DebugService has these dependencies [ [NameRegistration{name=CommunicationService}] ]
+2021-11-02 17:29:02,270  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : CommunicationService has these dependencies [ [NameRegistration{name=WebService}] ]
+2021-11-02 17:29:02,270  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : QuotaService has these dependencies [ [NameRegistration{name=TimeSeriesCounterService}] ]
+2021-11-02 17:29:02,270  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : AuthenticationService has these dependencies [ [NameRegistration{name=CommunicationService}, NameRegistration{name=CacheService}, NameRegistration{name=ServerRegistrationService}, NameRegistration{name=DataStoreService}, NameRegistration{name=HttpClientService}] ]
+2021-11-02 17:29:02,270  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : UserService has these dependencies [ [NameRegistration{name=CommunicationService}, NameRegistration{name=CacheService}, NameRegistration{name=ServerRegistrationService}, NameRegistration{name=DataStoreService}] ]
+2021-11-02 17:29:02,271  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : ResourceService has these dependencies [ [NameRegistration{name=CommunicationService}, NameRegistration{name=CacheService}, NameRegistration{name=ServerRegistrationService}, NameRegistration{name=DataStoreService}] ]
+2021-11-02 17:29:02,271  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : RepositoryService has these dependencies [ [NameRegistration{name=ZooKeeperService}, NameRegistration{name=DataStoreService}, NameRegistration{name=ServerMetricsService}] ]
+2021-11-02 17:29:02,271  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : ClusterService has these dependencies [ [NameRegistration{name=ServerRegistrationService}, NameRegistration{name=CommunicationService}, NameRegistration{name=ServerBindObserverService}, NameRegistration{name=ZooKeeperService}, NameRegistration{name=MetricsService}] ]
+2021-11-02 17:29:02,271  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : QueueClientService has these dependencies [ [NameRegistration{name=ServerRegistrationService}, NameRegistration{name=MetricsService}] ]
+2021-11-02 17:29:02,271  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : CacheService has these dependencies [ [NameRegistration{name=EventService}, NameRegistration{name=ClusterService}, NameRegistration{name=MetricsService}, NameRegistration{name=DataStoreService}, NameRegistration{name=CpsRuntimeService}, NameRegistration{name=HttpClientService}] ]
+2021-11-02 17:29:02,271  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : ServerBindService has these dependencies [ [NameRegistration{name=ServerRegistrationService}] ]
+2021-11-02 17:29:02,271  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : ServerBindObserverService has these dependencies [ [NameRegistration{name=ServerRegistrationService}] ]
+2021-11-02 17:29:02,271  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : FeatureService has these dependencies [ [NameRegistration{name=OrganizationService}] ]
+2021-11-02 17:29:02,272  main WARN  DataDispatchService - DataDispatchServiceImpl.start() : No Destination is specified. The Dispatch service will not be enabled
+2021-11-02 17:29:02,273  main INFO  DataDispatchService - DataDispatchServiceImpl.start() : Starting DataDispatchService TYPE=NONE DESTINATION=
+2021-11-02 17:29:02,273  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.startService() : ServiceDeployer.deploy() : Successfully started the service : DataDispatchService
+2021-11-02 17:29:02,274  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : LogService has these dependencies [ [NameRegistration{name=CommunicationService}] ]
+2021-11-02 17:29:02,274  main INFO  S.SECURITY_POLICY_SERVICE - SecurityPolicyServiceImpl.start() : REST mgmt api access is allowed only to the deployed orgs in message-processor
+2021-11-02 17:29:02,276  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.startService() : ServiceDeployer.deploy() : Successfully started the service : SecurityPolicyService
+2021-11-02 17:29:02,276  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.startService() : ServiceDeployer.deploy() : Successfully started the service : MachineKeyService
+2021-11-02 17:29:02,276  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : ZooKeeperService has these dependencies [ [NameRegistration{name=MachineKeyService}] ]
+2021-11-02 17:29:02,277  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.startService() : ServiceDeployer.deploy() : Successfully started the service : ZooKeeperService
+2021-11-02 17:29:02,277  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : FeatureFlagService has these dependencies [ [NameRegistration{name=ZooKeeperService}] ]
+2021-11-02 17:29:02,278  main INFO  c.a.f.FeatureFlagService - FeatureFlagsPersistance.init() : AX FeatureState newProtoBuf='ON' uriMetricsEnabled='ON'
+2021-11-02 17:29:02,278  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.startService() : ServiceDeployer.deploy() : Successfully started the service : FeatureFlagService
+2021-11-02 17:29:02,278  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : CpsRuntimeService has these dependencies [ [NameRegistration{name=CommunicationService}, NameRegistration{name=ServerRegistrationService}, NameRegistration{name=ServerBindService}, NameRegistration{name=OrganizationService}] ]
+2021-11-02 17:29:02,278  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : ComponentConfigurationService has these dependencies [ [NameRegistration{name=CommunicationService}] ]
+2021-11-02 17:29:02,279  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : SecurityService has these dependencies [ [NameRegistration{name=CommunicationService}, NameRegistration{name=RepositoryService}, NameRegistration{name=EventService}, NameRegistration{name=UserService}, NameRegistration{name=ResourceService}, NameRegistration{name=HttpClientService}] ]
+2021-11-02 17:29:02,279  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : EncryptionKeyService has these dependencies [ [NameRegistration{name=CommunicationService}, NameRegistration{name=RepositoryService}] ]
+2021-11-02 17:29:02,279  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.startService() : ServiceDeployer.deploy() : Successfully started the service : EventService
+2021-11-02 17:29:02,279  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : OrganizationService has these dependencies [ [NameRegistration{name=CommunicationService}, NameRegistration{name=RepositoryService}] ]
+2021-11-02 17:29:02,279  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : StorageService has these dependencies [ [NameRegistration{name=RepositoryService}, NameRegistration{name=FeatureService}] ]
+2021-11-02 17:29:02,279  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : DataStoreService has these dependencies [ [NameRegistration{name=ComponentConfigurationService}] ]
+2021-11-02 17:29:02,760  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.startService() : ServiceDeployer.deploy() : Successfully started the service : WebService
+2021-11-02 17:29:02,760  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : CommunicationService has these dependencies [ [NameRegistration{name=WebService}] ]
+2021-11-02 17:29:02,966  main WARN  i.n.b.ServerBootstrap - AbstractBootstrap.setChannelOption() : Unknown channel option 'SO_KEEPALIVE' for channel '[id: 0x8594cc48]'
+2021-11-02 17:29:02,967  main WARN  i.n.b.ServerBootstrap - AbstractBootstrap.setChannelOption() : Unknown channel option 'TCP_NODELAY' for channel '[id: 0x8594cc48]'
+2021-11-02 17:29:02,974  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.startService() : ServiceDeployer.deploy() : Successfully started the service : CommunicationService
+2021-11-02 17:29:02,975  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : ServerMetricsService has these dependencies [ [NameRegistration{name=CommunicationService}] ]
+2021-11-02 17:29:02,975  main INFO  S.HTTPCLIENTSERVICE - ServerMetricsServiceImpl.start() : Prometheus Metrics Enabled Histogram spec is BUCKETS,1D,2D,5D,10D,25D,50D,75D,100D,250D,500D,750D,1000D,2500D,5000D,7500D,10000.
+2021-11-02 17:29:03,108  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.startService() : ServiceDeployer.deploy() : Successfully started the service : ServerMetricsService
+2021-11-02 17:29:03,109  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : MetricsService has these dependencies [ [NameRegistration{name=CommunicationService}] ]
+2021-11-02 17:29:03,117  qtp1029898472-127 WARN  REST - APIRegistry.locateSubResource() : No match found for request path /servers/self/uuid/
+2021-11-02 17:29:03,122  qtp1029898472-127 ERROR REST - ExceptionMapper.toResponse() : Error occurred : null
+
+	org.apache.cxf.jaxrs.JAXRSInvoker.checkResultObject(JAXRSInvoker.java:336)
+	org.apache.cxf.jaxrs.JAXRSInvoker.invoke(JAXRSInvoker.java:211)
+	org.apache.cxf.jaxrs.JAXRSInvoker.invoke(JAXRSInvoker.java:92)
+	org.apache.cxf.interceptor.ServiceInvokerInterceptor$1.run(ServiceInvokerInterceptor.java:58)
+	
+2021-11-02 17:29:03,141  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.startService() : ServiceDeployer.deploy() : Successfully started the service : MetricsService
+2021-11-02 17:29:03,141  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : DebugService has these dependencies [ [NameRegistration{name=CommunicationService}] ]
+2021-11-02 17:29:03,142  main INFO  DEBUG.SERVICE - DebugServiceImpl.start() : Inactive timeout=300000 seconds. Max contexts=10. Filters Enabled=false
+2021-11-02 17:29:03,142  main INFO  DEBUG.SERVICE - DebugServiceImpl.start() : Debug Session Transaction Id prefix is an empty string.
+2021-11-02 17:29:03,143  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.startService() : ServiceDeployer.deploy() : Successfully started the service : DebugService
+2021-11-02 17:29:03,143  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : LogService has these dependencies [ [NameRegistration{name=CommunicationService}] ]
+2021-11-02 17:29:03,144  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.startService() : ServiceDeployer.deploy() : Successfully started the service : LogService
+2021-11-02 17:29:03,144  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : ComponentConfigurationService has these dependencies [ [NameRegistration{name=CommunicationService}] ]
+2021-11-02 17:29:03,146  main WARN  KERNEL.DEPLOYMENT - ServiceDeployer.loadPropertiesFromResources() : ServiceDeployer.getProperties : Resource file router-message-processor-communication.properties not found in classpath
+2021-11-02 17:29:03,149  main WARN  KERNEL.DEPLOYMENT - ServiceDeployer.loadPropertiesFromResources() : ServiceDeployer.getProperties : Resource file forward_proxy.properties not found in classpath
+2021-11-02 17:29:03,185  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.startService() : ServiceDeployer.deploy() : Successfully started the service : ComponentConfigurationService
+2021-11-02 17:29:03,185  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : HttpClientService has these dependencies [ [NameRegistration{name=ComponentConfigurationService}] ]
+2021-11-02 17:29:03,202  main INFO  S.HTTPCLIENTSERVICE - JettyHttpClient.initHttpClient() : Starting new Jetty Http Client : Jetty Client  Http2=false TrustAll=true connTimeOut=3 ForwardProxy=null CookieStore=null
+2021-11-02 17:29:03,254  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.startService() : ServiceDeployer.deploy() : Successfully started the service : HttpClientService
+2021-11-02 17:29:03,255  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : HTTPTransport has these dependencies [ [NameRegistration{name=CommunicationService}, NameRegistration{name=ComponentConfigurationService}, NameRegistration{name=ServerMetricsService}] ]
+2021-11-02 17:29:03,276  main INFO  HTTP.SERVICE - HTTPTransport.configure() : Block LocalHost connection=false. Block site local connections=false.
+2021-11-02 17:29:03,278  main INFO  HTTP.SERVICE - HTTPTransport.start() : Idle threshold of concurrent channels is 800 (100 per selector). Idle channels will be closed when this limit is reached.
+2021-11-02 17:29:03,278  main INFO  HTTP.SERVICE - HTTPTransport.start() : Consume large message before error is set to true
+2021-11-02 17:29:03,378  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.startService() : ServiceDeployer.deploy() : Successfully started the service : HTTPTransport
+2021-11-02 17:29:03,378  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : DataStoreService has these dependencies [ [NameRegistration{name=ComponentConfigurationService}] ]
+2021-11-02 17:29:03,391  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.startService() : ServiceDeployer.deploy() : Successfully started the service : DataStoreService
+2021-11-02 17:29:03,391  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : RepositoryService has these dependencies [ [NameRegistration{name=ZooKeeperService}, NameRegistration{name=DataStoreService}, NameRegistration{name=ServerMetricsService}] ]
+2021-11-02 17:29:03,392  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.startService() : ServiceDeployer.deploy() : Successfully started the service : RepositoryService
+2021-11-02 17:29:03,392  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : DeploymentStatusService has these dependencies [ [NameRegistration{name=RepositoryService}, NameRegistration{name=ComponentConfigurationService}] ]
+2021-11-02 17:29:03,392  main INFO  c.a.d.DeploymentStatusServiceClientImpl - DeploymentStatusServiceClientImpl.initDelegate() : Initializing deployment status delegate with setting configstoreEnabled: false
+2021-11-02 17:29:03,396  main INFO  c.a.d.DeploymentStatusServiceClientImpl - DeploymentStatusServiceClientImpl.start() : Initializing DeploymentStatusAdapter for bootup, with batching enabled: false
+2021-11-02 17:29:03,396  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.startService() : ServiceDeployer.deploy() : Successfully started the service : DeploymentStatusService
+2021-11-02 17:29:03,396  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : EncryptionKeyService has these dependencies [ [NameRegistration{name=CommunicationService}, NameRegistration{name=RepositoryService}] ]
+2021-11-02 17:29:03,398  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.startService() : ServiceDeployer.deploy() : Successfully started the service : EncryptionKeyService
+2021-11-02 17:29:03,398  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : OrganizationService has these dependencies [ [NameRegistration{name=CommunicationService}, NameRegistration{name=RepositoryService}] ]
+2021-11-02 17:29:03,398  main INFO  ORGANIZATIONS - OrganizationServiceImpl.start() : Starting OrganizationService w/ http client enabled = false
+2021-11-02 17:29:03,403  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.startService() : ServiceDeployer.deploy() : Successfully started the service : OrganizationService
+2021-11-02 17:29:03,404  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : FeatureService has these dependencies [ [NameRegistration{name=OrganizationService}] ]
+2021-11-02 17:29:03,405  main INFO  FeatureService - SystemDefaultConfiguration.setupXSLDoctypeFlag() : Allow XSL External entities system default is true. Trial mode is false.
+2021-11-02 17:29:03,406  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.startService() : ServiceDeployer.deploy() : Successfully started the service : FeatureService
+2021-11-02 17:29:03,406  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : StorageService has these dependencies [ [NameRegistration{name=RepositoryService}, NameRegistration{name=FeatureService}] ]
+2021-11-02 17:29:03,407  main INFO  STORAGE.SERVICE - StorageServiceImpl.start() : Starting class com.apigee.storage.StorageServiceImpl with configuration StorageServiceConfiguration{storage.service.enabled=false, storage.service.bundle.comparison.enabled=true, storage.gcs.retry.delay.initial.seconds=1, storage.gcs.retry.delay.max.seconds=8, storage.gcs.retry.delay.multiplier=2, storage.gcs.retry.max.attempts=5, storage.gcs.retry.total.timeout.seconds=50, storage.gcs.rpc.timeout.initial.seconds=50, storage.gcs.rpc.timeout.max.seconds=50, storage.gcs.rpc.timeout.multiplier=1, storage.gcs.file.streaming.size=1000000, storage.gcs.file.streaming.buffer.size=8192}
+2021-11-02 17:29:03,408  main INFO  STORAGE.SERVICE - StorageServiceImpl.start() : Start class com.apigee.storage.StorageServiceImplcomplete.
+2021-11-02 17:29:03,408  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.startService() : ServiceDeployer.deploy() : Successfully started the service : StorageService
+2021-11-02 17:29:03,408  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : ServerRegistrationService has these dependencies [ [NameRegistration{name=RepositoryService}, NameRegistration{name=CommunicationService}, NameRegistration{name=ComponentConfigurationService}, NameRegistration{name=ServerMetricsService}] ]
+2021-11-02 17:29:03,408  main INFO  REGISTRATION - ServerRegistrationServiceImpl.start() : starting ServerRegistrationService
+2021-11-02 17:29:03,410  main INFO  REGISTRATION - ServerRegistrationServiceImpl.initServiceRegistrationAdapter() : Initialized server registration zookeeper adapter.
+2021-11-02 17:29:03,483  main INFO  c.a.i.InputValidator - InputValidator.getEnforcementTimestamp() : checkmarx enforcement timestamp set to 0
+2021-11-02 17:29:03,488  main WARN  REGISTRATION - CommunicationInfoBuilder.loadIPAddresses() : CommunicationInfoBuilder.loadIPAddresses : File /opt/apigee/ec2.properties is missing. Will use localhost as default for all the hosts
+2021-11-02 17:29:03,650  main INFO  REGISTRATION - ZKServerRegistrationAdapter.storeServerRegistrationPath() : Registering the server uuid 3979b825-bdc3-4764-a284-aa9b900107b8 with region dc-1 and pod gateway information
+2021-11-02 17:29:03,668  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.startService() : ServiceDeployer.deploy() : Successfully started the service : ServerRegistrationService
+2021-11-02 17:29:03,668  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : TimeSeriesCounterService has these dependencies [ [NameRegistration{name=ServerRegistrationService}, NameRegistration{name=MetricsService}, NameRegistration{name=DataStoreService}] ]
+2021-11-02 17:29:03,674  main INFO  ZOOKEEPER - ZooKeeperServiceImpl.registerPathWatcher() : attaching watcher on path /regions/dc-1/pods/gateway/types/counter-datastore/{uuid}, async is true
+2021-11-02 17:29:03,755  main INFO  DATASTORE.CASSANDRA - DataStoreServiceImpl.createConnectionPoolKey() : created connection pool key counter#10.10.214.121_10.10.214.122_10.10.214.123 for config name counter-datastore
+2021-11-02 17:29:03,760  ServerProtocolChildGroup-RPC-0 ERROR RPC - RPCMachineImpl.processFrame() : Unknown Target com.apigee.cluster.v2 for the RPC request frame [type=REQUEST dataType=PROTO2RPC correlationId=1349715]
+2021-11-02 17:29:03,762  ServerProtocolChildGroup-RPC-0 ERROR RPC - ServerHandleImpl.inboundBufferUpdated() : Error processing frame [type=REQUEST dataType=PROTO2RPC correlationId=1349715]: Unknown target com.apigee.cluster.v2
+2021-11-02 17:29:03,762  ServerProtocolChildGroup-RPC-0 ERROR RPC - RPCMachineImpl.processFrame() : Unknown Target com.apigee.cluster.v2 for the RPC request frame [type=REQUEST dataType=PROTO2RPC correlationId=635171]
+2021-11-02 17:29:03,762  ServerProtocolChildGroup-RPC-0 ERROR RPC - ServerHandleImpl.inboundBufferUpdated() : Error processing frame [type=REQUEST dataType=PROTO2RPC correlationId=635171]: Unknown target com.apigee.cluster.v2
+2021-11-02 17:29:03,763  ServerProtocolChildGroup-RPC-0 ERROR RPC - RPCMachineImpl.processFrame() : Unknown Target com.apigee.cluster.v2 for the RPC request frame [type=REQUEST dataType=PROTO2RPC correlationId=634943]
+2021-11-02 17:29:03,763  ServerProtocolChildGroup-RPC-0 ERROR RPC - ServerHandleImpl.inboundBufferUpdated() : Error processing frame [type=REQUEST dataType=PROTO2RPC correlationId=634943]: Unknown target com.apigee.cluster.v2
+2021-11-02 17:29:03,763  ServerProtocolChildGroup-RPC-0 ERROR RPC - RPCMachineImpl.processFrame() : Unknown Target com.apigee.cluster.v2 for the RPC request frame [type=REQUEST dataType=PROTO2RPC correlationId=1349929]
+2021-11-02 17:29:03,763  ServerProtocolChildGroup-RPC-0 ERROR RPC - ServerHandleImpl.inboundBufferUpdated() : Error processing frame [type=REQUEST dataType=PROTO2RPC correlationId=1349929]: Unknown target com.apigee.cluster.v2
+2021-11-02 17:29:03,763  ServerProtocolChildGroup-RPC-0 ERROR RPC - RPCMachineImpl.processFrame() : Unknown Target com.apigee.cluster.v2 for the RPC request frame [type=REQUEST dataType=PROTO2RPC correlationId=3435]
+2021-11-02 17:29:03,764  ServerProtocolChildGroup-RPC-0 ERROR RPC - ServerHandleImpl.inboundBufferUpdated() : Error processing frame [type=REQUEST dataType=PROTO2RPC correlationId=3435]: Unknown target com.apigee.cluster.v2
+2021-11-02 17:29:03,764  ServerProtocolChildGroup-RPC-0 ERROR RPC - RPCMachineImpl.processFrame() : Unknown Target com.apigee.cluster.v2 for the RPC request frame [type=REQUEST dataType=PROTO2RPC correlationId=3361]
+2021-11-02 17:29:03,764  ServerProtocolChildGroup-RPC-0 ERROR RPC - ServerHandleImpl.inboundBufferUpdated() : Error processing frame [type=REQUEST dataType=PROTO2RPC correlationId=3361]: Unknown target com.apigee.cluster.v2
+2021-11-02 17:29:03,764  ServerProtocolChildGroup-RPC-0 ERROR RPC - RPCMachineImpl.processFrame() : Unknown Target com.apigee.cluster.v2 for the RPC request frame [type=REQUEST dataType=PROTO2RPC correlationId=3435]
+2021-11-02 17:29:03,765  ServerProtocolChildGroup-RPC-0 ERROR RPC - ServerHandleImpl.inboundBufferUpdated() : Error processing frame [type=REQUEST dataType=PROTO2RPC correlationId=3435]: Unknown target com.apigee.cluster.v2
+2021-11-02 17:29:03,765  ServerProtocolChildGroup-RPC-0 ERROR RPC - RPCMachineImpl.processFrame() : Unknown Target com.apigee.cluster.v2 for the RPC request frame [type=REQUEST dataType=PROTO2RPC correlationId=3443]
+2021-11-02 17:29:03,765  ServerProtocolChildGroup-RPC-0 ERROR RPC - ServerHandleImpl.inboundBufferUpdated() : Error processing frame [type=REQUEST dataType=PROTO2RPC correlationId=3443]: Unknown target com.apigee.cluster.v2
+2021-11-02 17:29:03,774  main INFO  m.p.c.m.ConfigurableConsistencyLevel - ConfigurableConsistencyLevel.setDefaultReadConsistencyLevel() : Default read ConsistencyLevel set to: LOCAL_QUORUM.
+2021-11-02 17:29:03,774  main INFO  m.p.c.m.ConfigurableConsistencyLevel - ConfigurableConsistencyLevel.setDefaultWriteConsistencyLevel() : Default write ConsistencyLevel set to: LOCAL_QUORUM.
+2021-11-02 17:29:03,872  main INFO  c.n.a.c.i.ConnectionPoolMBeanManager - ConnectionPoolMBeanManager.registerMonitor() : Registering mbean: com.netflix.MonitoredResources:type=ASTYANAX,name=counter-datastore,ServiceType=connectionpool
+2021-11-02 17:29:03,882  main INFO  c.n.a.c.i.CountingConnectionPoolMonitor - CountingConnectionPoolMonitor.onHostAdded() : AddHost: 10.10.214.122
+2021-11-02 17:29:03,882  main INFO  c.n.a.c.i.CountingConnectionPoolMonitor - CountingConnectionPoolMonitor.onHostAdded() : AddHost: 10.10.214.123
+2021-11-02 17:29:03,882  main INFO  c.n.a.c.i.CountingConnectionPoolMonitor - CountingConnectionPoolMonitor.onHostAdded() : AddHost: 10.10.214.121
+2021-11-02 17:29:03,940  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.startService() : ServiceDeployer.deploy() : Successfully started the service : TimeSeriesCounterService
+2021-11-02 17:29:03,940  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : QuotaService has these dependencies [ [NameRegistration{name=TimeSeriesCounterService}] ]
+2021-11-02 17:29:03,941  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.startService() : ServiceDeployer.deploy() : Successfully started the service : QuotaService
+2021-11-02 17:29:03,941  main INFO  KERNEL.DEPLOYMENT - ServiceDeployer.getUndeployedRequirements() : DEKService has these dependencies [ [NameRegistration{name=ServerRegistrationService}] ]
+2021-11-02 17:29:03,941  main INFO  DEK_SERVICE - DEKServiceImpl.start() : Starting DEK service...
+2021-11-02 17:29:03,949  main ERROR REGISTRATION - ServerRegistrationServiceImpl.getResolutionScope() : server type dek-datastore is not defined in server types?
+2021-11-02 17:29:03,951  main ERROR KERNEL.DEPLOYMENT - ServiceDeployer.startService() : ServiceDeployer.deploy() : Got a life cycle exception while starting service [DEKService, Unknown resolution scope for server type : dek-datastore] : {}
+java.lang.IllegalArgumentException: Unknown resolution scope for server type : dek-datastore
+	at com.apigee.registration.ServerRegistrationServiceImpl.getResolutionScope(ServerRegistrationServiceImpl.java:749)
+	at com.apigee.registration.ServerRegistrationServiceImpl.resolvePodForType(ServerRegistrationServiceImpl.java:766)
+	at com.apigee.registration.ServerRegistrationServiceImpl.register(ServerRegistrationServiceImpl.java:517)
+	at com.apigee.dek.service.DEKServiceImpl.start(DEKServiceImpl.java:103)
+	at com.apigee.kernel.service.deployment.ServiceDeployer.startService(ServiceDeployer.java:229)
+	at com.apigee.kernel.service.deployment.ServiceDeployer.deploy(ServiceDeployer.java:77)
+	at com.apigee.kernel.service.deployment.ServiceDeployer.deployDependantServices(ServiceDeployer.java:460)
+	at com.apigee.kernel.service.deployment.ServiceDeployer.deploy(ServiceDeployer.java:82)
+	at com.apigee.kernel.MicroKernel.deployAll(MicroKernel.java:233)
+	at com.apigee.kernel.MicroKernel.start(MicroKernel.java:145)
+	at com.apigee.kernel.MicroKernel.start(MicroKernel.java:140)
+	at com.apigee.kernel.MicroKernel.main(MicroKernel.java:90)
+2021-11-02 17:29:03,954  main ERROR KERNEL - MicroKernel.deployAll() : Error in deploying the deployment : ServerRegistrationService. Exception: {}
+com.apigee.kernel.exceptions.spi.UncheckedException: Starting of Service DEKService failed unexpectedly
+	at com.apigee.kernel.service.deployment.ServiceDeployer.getUncheckedException(ServiceDeployer.java:261)
+	at com.apigee.kernel.service.deployment.ServiceDeployer.startService(ServiceDeployer.java:242)
+	at com.apigee.kernel.service.deployment.ServiceDeployer.deploy(ServiceDeployer.java:77)
+	at com.apigee.kernel.service.deployment.ServiceDeployer.deployDependantServices(ServiceDeployer.java:460)
+	at com.apigee.kernel.service.deployment.ServiceDeployer.deploy(ServiceDeployer.java:82)
+	at com.apigee.kernel.MicroKernel.deployAll(MicroKernel.java:233)
+	at com.apigee.kernel.MicroKernel.start(MicroKernel.java:145)
+	at com.apigee.kernel.MicroKernel.start(MicroKernel.java:140)
+	at com.apigee.kernel.MicroKernel.main(MicroKernel.java:90)
+Caused by: java.lang.IllegalArgumentException: Unknown resolution scope for server type : dek-datastore
+	at com.apigee.registration.ServerRegistrationServiceImpl.getResolutionScope(ServerRegistrationServiceImpl.java:749)
+	at com.apigee.registration.ServerRegistrationServiceImpl.resolvePodForType(ServerRegistrationServiceImpl.java:766)
+	at com.apigee.registration.ServerRegistrationServiceImpl.register(ServerRegistrationServiceImpl.java:517)
+	at com.apigee.dek.service.DEKServiceImpl.start(DEKServiceImpl.java:103)
+	at com.apigee.kernel.service.deployment.ServiceDeployer.startService(ServiceDeployer.java:229)
+	... 7 common frames omitted
+2021-11-02 17:29:03,955  Thread-1 INFO  KERNEL - ShutdownHook.run() : ShutdownHook.run : System shutdown in progress...
+2021-11-02 17:29:03,956  Thread-1 INFO  KERNEL.DEPLOYMENT - ServiceDeployer.stopService() : ServiceDeployer.unDeploy() : Successfully stopped the service : ServerBindService
+2021-11-02 17:29:03,956  Thread-1 INFO  KERNEL.DEPLOYMENT - ServiceDeployer.stopService() : ServiceDeployer.unDeploy() : Successfully stopped the service : ServerRegistrationService
+2021-11-02 17:29:03,965  ServerProtocolChildGroup-RPC-0 ERROR RPC - RPCMachineImpl.processFrame() : Unknown Target com.apigee.cluster.v2 for the RPC request frame [type=REQUEST dataType=PROTO2RPC correlationId=634944]
+2021-11-02 17:29:03,966  ServerProtocolChildGroup-RPC-0 ERROR RPC - ServerHandleImpl.inboundBufferUpdated() : Error processing frame [type=REQUEST dataType=PROTO2RPC correlationId=634944]: Unknown target com.apigee.cluster.v2
+2021-11-02 17:29:03,966  ServerProtocolChildGroup-RPC-0 ERROR RPC - RPCMachineImpl.processFrame() : Unknown Target com.apigee.cluster.v2 for the RPC request frame [type=REQUEST dataType=PROTO2RPC correlationId=635172]
+2021-11-02 17:29:03,966  ServerProtocolChildGroup-RPC-0 ERROR RPC - ServerHandleImpl.inboundBufferUpdated() : Error processing frame [type=REQUEST dataType=PROTO2RPC correlationId=635172]: Unknown target com.apigee.cluster.v2
+2021-11-02 17:29:03,967  ServerProtocolChildGroup-RPC-0 ERROR RPC - RPCMachineImpl.processFrame() : Unknown Target com.apigee.cluster.v2 for the RPC request frame [type=REQUEST dataType=PROTO2RPC correlationId=1349930]
+2021-11-02 17:29:03,968  ServerProtocolChildGroup-RPC-0 ERROR RPC - ServerHandleImpl.inboundBufferUpdated() : Error processing frame [type=REQUEST dataType=PROTO2RPC correlationId=1349930]: Unknown target com.apigee.cluster.v2
+2021-11-02 17:29:03,968  ServerProtocolChildGroup-RPC-0 ERROR RPC - RPCMachineImpl.processFrame() : Unknown Target com.apigee.cluster.v2 for the RPC request frame [type=REQUEST dataType=PROTO2RPC correlationId=3436]
+2021-11-02 17:29:03,968  ServerProtocolChildGroup-RPC-0 ERROR RPC - ServerHandleImpl.inboundBufferUpdated() : Error processing frame [type=REQUEST dataType=PROTO2RPC correlationId=3436]: Unknown target com.apigee.cluster.v2
+2021-11-02 17:29:03,968  ServerProtocolChildGroup-RPC-0 ERROR RPC - RPCMachineImpl.processFrame() : Unknown Target com.apigee.cluster.v2 for the RPC request frame [type=REQUEST dataType=PROTO2RPC correlationId=1349716]
+2021-11-02 17:29:03,968  ServerProtocolChildGroup-RPC-0 ERROR RPC - ServerHandleImpl.inboundBufferUpdated() : Error processing frame [type=REQUEST dataType=PROTO2RPC correlationId=1349716]: Unknown target com.apigee.cluster.v2
+2021-11-02 17:29:03,969  ServerProtocolChildGroup-RPC-0 ERROR RPC - RPCMachineImpl.processFrame() : Unknown Target com.apigee.cluster.v2 for the RPC request frame [type=REQUEST dataType=PROTO2RPC correlationId=3362]
+2021-11-02 17:29:03,969  ServerProtocolChildGroup-RPC-0 ERROR RPC - ServerHandleImpl.inboundBufferUpdated() : Error processing frame [type=REQUEST dataType=PROTO2RPC correlationId=3362]: Unknown target com.apigee.cluster.v2
+2021-11-02 17:29:03,970  ServerProtocolChildGroup-RPC-0 ERROR RPC - RPCMachineImpl.processFrame() : Unknown Target com.apigee.cluster.v2 for the RPC request frame [type=REQUEST dataType=PROTO2RPC correlationId=3444]
+2021-11-02 17:29:03,970  ServerProtocolChildGroup-RPC-0 ERROR RPC - ServerHandleImpl.inboundBufferUpdated() : Error processing frame [type=REQUEST dataType=PROTO2RPC correlationId=3444]: Unknown target com.apigee.cluster.v2
+2021-11-02 17:29:03,970  ServerProtocolChildGroup-RPC-0 ERROR RPC - RPCMachineImpl.processFrame() : Unknown Target com.apigee.cluster.v2 for the RPC request frame [type=REQUEST dataType=PROTO2RPC correlationId=3436]
+2021-11-02 17:29:03,970  ServerProtocolChildGroup-RPC-0 ERROR RPC - ServerHandleImpl.inboundBufferUpdated() : Error processing frame [type=REQUEST dataType=PROTO2RPC correlationId=3436]: Unknown target com.apigee.cluster.v2
+2021-11-02 17:29:04,967  Thread-1 INFO  KERNEL.DEPLOYMENT - ServiceDeployer.stopService() : ServiceDeployer.unDeploy() : Successfully stopped the service : CommunicationService
+2021-11-02 17:29:04,967  Thread-1 INFO  KERNEL.DEPLOYMENT - ServiceDeployer.stopService() : ServiceDeployer.unDeploy() : Successfully stopped the service : WebService
+2021-11-02 17:29:04,967  ServerProtocolChildGroup-RPC-0 WARN  i.n.c.AbstractChannel - AbstractChannel$AbstractUnsafe.invokeLater() : Can't invoke task later as EventLoop rejected it
+java.util.concurrent.RejectedExecutionException: event executor terminated
+	at io.netty.util.concurrent.SingleThreadEventExecutor.reject(SingleThreadEventExecutor.java:926)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.offerTask(SingleThreadEventExecutor.java:353)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.addTask(SingleThreadEventExecutor.java:346)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.execute(SingleThreadEventExecutor.java:828)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.execute(SingleThreadEventExecutor.java:818)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.invokeLater(AbstractChannel.java:1018)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.deregister(AbstractChannel.java:809)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.fireChannelInactiveAndDeregister(AbstractChannel.java:769)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.close(AbstractChannel.java:752)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.close(AbstractChannel.java:607)
+	at io.netty.channel.nio.NioEventLoop.closeAll(NioEventLoop.java:762)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:524)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:989)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at java.lang.Thread.run(Thread.java:748)
+2021-11-02 17:29:04,968  Thread-1 INFO  KERNEL.DEPLOYMENT - ServiceDeployer.stopService() : ServiceDeployer.unDeploy() : Successfully stopped the service : EventService
+2021-11-02 17:29:04,968  ServerProtocolChildGroup-RPC-0 WARN  i.n.c.AbstractChannel - AbstractChannel$AbstractUnsafe.invokeLater() : Can't invoke task later as EventLoop rejected it
+java.util.concurrent.RejectedExecutionException: event executor terminated
+	at io.netty.util.concurrent.SingleThreadEventExecutor.reject(SingleThreadEventExecutor.java:926)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.offerTask(SingleThreadEventExecutor.java:353)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.addTask(SingleThreadEventExecutor.java:346)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.execute(SingleThreadEventExecutor.java:828)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.execute(SingleThreadEventExecutor.java:818)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.invokeLater(AbstractChannel.java:1018)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.deregister(AbstractChannel.java:809)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.fireChannelInactiveAndDeregister(AbstractChannel.java:769)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.close(AbstractChannel.java:752)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.close(AbstractChannel.java:607)
+	at io.netty.channel.nio.NioEventLoop.closeAll(NioEventLoop.java:762)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:524)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:989)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at java.lang.Thread.run(Thread.java:748)
+2021-11-02 17:29:04,968  Thread-1 INFO  KERNEL.DEPLOYMENT - ServiceDeployer.stopService() : ServiceDeployer.unDeploy() : Successfully stopped the service : RepositoryService
+2021-11-02 17:29:04,968  ServerProtocolChildGroup-RPC-0 WARN  i.n.c.AbstractChannel - AbstractChannel$AbstractUnsafe.invokeLater() : Can't invoke task later as EventLoop rejected it
+java.util.concurrent.RejectedExecutionException: event executor terminated
+	at io.netty.util.concurrent.SingleThreadEventExecutor.reject(SingleThreadEventExecutor.java:926)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.offerTask(SingleThreadEventExecutor.java:353)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.addTask(SingleThreadEventExecutor.java:346)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.execute(SingleThreadEventExecutor.java:828)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.execute(SingleThreadEventExecutor.java:818)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.invokeLater(AbstractChannel.java:1018)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.deregister(AbstractChannel.java:809)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.fireChannelInactiveAndDeregister(AbstractChannel.java:769)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.close(AbstractChannel.java:752)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.close(AbstractChannel.java:607)
+	at io.netty.channel.nio.NioEventLoop.closeAll(NioEventLoop.java:762)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:524)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:989)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at java.lang.Thread.run(Thread.java:748)
+2021-11-02 17:29:04,968  ServerProtocolChildGroup-RPC-0 WARN  i.n.c.AbstractChannel - AbstractChannel$AbstractUnsafe.invokeLater() : Can't invoke task later as EventLoop rejected it
+java.util.concurrent.RejectedExecutionException: event executor terminated
+	at io.netty.util.concurrent.SingleThreadEventExecutor.reject(SingleThreadEventExecutor.java:926)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.offerTask(SingleThreadEventExecutor.java:353)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.addTask(SingleThreadEventExecutor.java:346)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.execute(SingleThreadEventExecutor.java:828)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.execute(SingleThreadEventExecutor.java:818)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.invokeLater(AbstractChannel.java:1018)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.deregister(AbstractChannel.java:809)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.fireChannelInactiveAndDeregister(AbstractChannel.java:769)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.close(AbstractChannel.java:752)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.close(AbstractChannel.java:607)
+	at io.netty.channel.nio.NioEventLoop.closeAll(NioEventLoop.java:762)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:524)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:989)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at java.lang.Thread.run(Thread.java:748)
+2021-11-02 17:29:04,969  ServerProtocolChildGroup-RPC-0 WARN  i.n.c.AbstractChannel - AbstractChannel$AbstractUnsafe.invokeLater() : Can't invoke task later as EventLoop rejected it
+java.util.concurrent.RejectedExecutionException: event executor terminated
+	at io.netty.util.concurrent.SingleThreadEventExecutor.reject(SingleThreadEventExecutor.java:926)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.offerTask(SingleThreadEventExecutor.java:353)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.addTask(SingleThreadEventExecutor.java:346)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.execute(SingleThreadEventExecutor.java:828)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.execute(SingleThreadEventExecutor.java:818)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.invokeLater(AbstractChannel.java:1018)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.deregister(AbstractChannel.java:809)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.fireChannelInactiveAndDeregister(AbstractChannel.java:769)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.close(AbstractChannel.java:752)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.close(AbstractChannel.java:607)
+	at io.netty.channel.nio.NioEventLoop.closeAll(NioEventLoop.java:762)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:524)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:989)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at java.lang.Thread.run(Thread.java:748)
+2021-11-02 17:29:04,969  ServerProtocolChildGroup-RPC-0 WARN  i.n.c.AbstractChannel - AbstractChannel$AbstractUnsafe.invokeLater() : Can't invoke task later as EventLoop rejected it
+java.util.concurrent.RejectedExecutionException: event executor terminated
+	at io.netty.util.concurrent.SingleThreadEventExecutor.reject(SingleThreadEventExecutor.java:926)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.offerTask(SingleThreadEventExecutor.java:353)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.addTask(SingleThreadEventExecutor.java:346)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.execute(SingleThreadEventExecutor.java:828)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.execute(SingleThreadEventExecutor.java:818)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.invokeLater(AbstractChannel.java:1018)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.deregister(AbstractChannel.java:809)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.fireChannelInactiveAndDeregister(AbstractChannel.java:769)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.close(AbstractChannel.java:752)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.close(AbstractChannel.java:607)
+	at io.netty.channel.nio.NioEventLoop.closeAll(NioEventLoop.java:762)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:524)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:989)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at java.lang.Thread.run(Thread.java:748)
+2021-11-02 17:29:04,969  ServerProtocolChildGroup-RPC-0 WARN  i.n.c.AbstractChannel - AbstractChannel$AbstractUnsafe.invokeLater() : Can't invoke task later as EventLoop rejected it
+java.util.concurrent.RejectedExecutionException: event executor terminated
+	at io.netty.util.concurrent.SingleThreadEventExecutor.reject(SingleThreadEventExecutor.java:926)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.offerTask(SingleThreadEventExecutor.java:353)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.addTask(SingleThreadEventExecutor.java:346)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.execute(SingleThreadEventExecutor.java:828)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.execute(SingleThreadEventExecutor.java:818)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.invokeLater(AbstractChannel.java:1018)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.deregister(AbstractChannel.java:809)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.fireChannelInactiveAndDeregister(AbstractChannel.java:769)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.close(AbstractChannel.java:752)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.close(AbstractChannel.java:607)
+	at io.netty.channel.nio.NioEventLoop.closeAll(NioEventLoop.java:762)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:524)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:989)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at java.lang.Thread.run(Thread.java:748)
+2021-11-02 17:29:04,969  Curator-Framework-0 INFO  o.a.c.f.i.CuratorFrameworkImpl - CuratorFrameworkImpl.backgroundOperationsLoop() : backgroundOperationsLoop exiting
+2021-11-02 17:29:04,970  ServerProtocolChildGroup-RPC-0 WARN  i.n.c.AbstractChannel - AbstractChannel$AbstractUnsafe.invokeLater() : Can't invoke task later as EventLoop rejected it
+java.util.concurrent.RejectedExecutionException: event executor terminated
+	at io.netty.util.concurrent.SingleThreadEventExecutor.reject(SingleThreadEventExecutor.java:926)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.offerTask(SingleThreadEventExecutor.java:353)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.addTask(SingleThreadEventExecutor.java:346)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.execute(SingleThreadEventExecutor.java:828)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.execute(SingleThreadEventExecutor.java:818)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.invokeLater(AbstractChannel.java:1018)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.deregister(AbstractChannel.java:809)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.fireChannelInactiveAndDeregister(AbstractChannel.java:769)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.close(AbstractChannel.java:752)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.close(AbstractChannel.java:607)
+	at io.netty.channel.nio.NioEventLoop.closeAll(NioEventLoop.java:762)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:524)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:989)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at java.lang.Thread.run(Thread.java:748)
+2021-11-02 17:29:04,970  RPCServerServerProtocolParentGroup-RPC-0 WARN  i.n.c.AbstractChannel - AbstractChannel$AbstractUnsafe.register() : Force-closing a channel whose registration task was not accepted by an event loop: [id: 0x74edf184, L:/10.10.214.130:4528 - R:/10.10.214.125:40646]
+java.util.concurrent.RejectedExecutionException: event executor terminated
+	at io.netty.util.concurrent.SingleThreadEventExecutor.reject(SingleThreadEventExecutor.java:926)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.offerTask(SingleThreadEventExecutor.java:353)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.addTask(SingleThreadEventExecutor.java:346)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.execute(SingleThreadEventExecutor.java:828)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.execute(SingleThreadEventExecutor.java:818)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.register(AbstractChannel.java:471)
+	at io.netty.channel.SingleThreadEventLoop.register(SingleThreadEventLoop.java:87)
+	at io.netty.channel.SingleThreadEventLoop.register(SingleThreadEventLoop.java:81)
+	at io.netty.channel.MultithreadEventLoopGroup.register(MultithreadEventLoopGroup.java:86)
+	at io.netty.bootstrap.ServerBootstrap$ServerBootstrapAcceptor.channelRead(ServerBootstrap.java:218)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:357)
+	at io.netty.handler.logging.LoggingHandler.channelRead(LoggingHandler.java:271)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:357)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1410)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:919)
+	at io.netty.channel.nio.AbstractNioMessageChannel$NioMessageUnsafe.read(AbstractNioMessageChannel.java:93)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:714)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:650)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:576)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:493)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:989)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at java.lang.Thread.run(Thread.java:748)
+2021-11-02 17:29:04,971  RPCServerServerProtocolParentGroup-RPC-0 ERROR i.n.u.c.D.rejectedExecution - DefaultPromise.safeExecute() : Failed to submit a listener notification task. Event loop shut down?
+java.util.concurrent.RejectedExecutionException: event executor terminated
+	at io.netty.util.concurrent.SingleThreadEventExecutor.reject(SingleThreadEventExecutor.java:926)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.offerTask(SingleThreadEventExecutor.java:353)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.addTask(SingleThreadEventExecutor.java:346)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.execute(SingleThreadEventExecutor.java:828)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.execute(SingleThreadEventExecutor.java:818)
+	at io.netty.util.concurrent.DefaultPromise.safeExecute(DefaultPromise.java:841)
+	at io.netty.util.concurrent.DefaultPromise.notifyListeners(DefaultPromise.java:498)
+	at io.netty.util.concurrent.DefaultPromise.addListener(DefaultPromise.java:183)
+	at io.netty.channel.DefaultChannelPromise.addListener(DefaultChannelPromise.java:95)
+	at io.netty.channel.DefaultChannelPromise.addListener(DefaultChannelPromise.java:30)
+	at io.netty.bootstrap.ServerBootstrap$ServerBootstrapAcceptor.channelRead(ServerBootstrap.java:218)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:357)
+	at io.netty.handler.logging.LoggingHandler.channelRead(LoggingHandler.java:271)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:357)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1410)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:919)
+	at io.netty.channel.nio.AbstractNioMessageChannel$NioMessageUnsafe.read(AbstractNioMessageChannel.java:93)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:714)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:650)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:576)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:493)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:989)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at java.lang.Thread.run(Thread.java:748)
+2021-11-02 17:29:04,971  RPCServerServerProtocolParentGroup-RPC-0 WARN  i.n.c.AbstractChannel - AbstractChannel$AbstractUnsafe.register() : Force-closing a channel whose registration task was not accepted by an event loop: [id: 0x2be3fd5f, L:/10.10.214.130:4528 - R:/10.10.214.125:40648]
+java.util.concurrent.RejectedExecutionException: event executor terminated
+	at io.netty.util.concurrent.SingleThreadEventExecutor.reject(SingleThreadEventExecutor.java:926)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.offerTask(SingleThreadEventExecutor.java:353)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.addTask(SingleThreadEventExecutor.java:346)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.execute(SingleThreadEventExecutor.java:828)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.execute(SingleThreadEventExecutor.java:818)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.register(AbstractChannel.java:471)
+	at io.netty.channel.SingleThreadEventLoop.register(SingleThreadEventLoop.java:87)
+	at io.netty.channel.SingleThreadEventLoop.register(SingleThreadEventLoop.java:81)
+	at io.netty.channel.MultithreadEventLoopGroup.register(MultithreadEventLoopGroup.java:86)
+	at io.netty.bootstrap.ServerBootstrap$ServerBootstrapAcceptor.channelRead(ServerBootstrap.java:218)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:357)
+	at io.netty.handler.logging.LoggingHandler.channelRead(LoggingHandler.java:271)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:357)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1410)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:919)
+	at io.netty.channel.nio.AbstractNioMessageChannel$NioMessageUnsafe.read(AbstractNioMessageChannel.java:93)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:714)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:650)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:576)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:493)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:989)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at java.lang.Thread.run(Thread.java:748)
+2021-11-02 17:29:04,972  RPCServerServerProtocolParentGroup-RPC-0 ERROR i.n.u.c.D.rejectedExecution - DefaultPromise.safeExecute() : Failed to submit a listener notification task. Event loop shut down?
+java.util.concurrent.RejectedExecutionException: event executor terminated
+	at io.netty.util.concurrent.SingleThreadEventExecutor.reject(SingleThreadEventExecutor.java:926)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.offerTask(SingleThreadEventExecutor.java:353)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.addTask(SingleThreadEventExecutor.java:346)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.execute(SingleThreadEventExecutor.java:828)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.execute(SingleThreadEventExecutor.java:818)
+	at io.netty.util.concurrent.DefaultPromise.safeExecute(DefaultPromise.java:841)
+	at io.netty.util.concurrent.DefaultPromise.notifyListeners(DefaultPromise.java:498)
+	at io.netty.util.concurrent.DefaultPromise.addListener(DefaultPromise.java:183)
+	at io.netty.channel.DefaultChannelPromise.addListener(DefaultChannelPromise.java:95)
+	at io.netty.channel.DefaultChannelPromise.addListener(DefaultChannelPromise.java:30)
+	at io.netty.bootstrap.ServerBootstrap$ServerBootstrapAcceptor.channelRead(ServerBootstrap.java:218)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:357)
+	at io.netty.handler.logging.LoggingHandler.channelRead(LoggingHandler.java:271)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:357)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1410)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:919)
+	at io.netty.channel.nio.AbstractNioMessageChannel$NioMessageUnsafe.read(AbstractNioMessageChannel.java:93)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:714)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:650)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:576)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:493)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:989)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at java.lang.Thread.run(Thread.java:748)
+2021-11-02 17:29:04,973  RPCServerServerProtocolParentGroup-RPC-0 WARN  i.n.c.AbstractChannel - AbstractChannel$AbstractUnsafe.register() : Force-closing a channel whose registration task was not accepted by an event loop: [id: 0x18dfb26b, L:/10.10.214.130:4528 - R:/10.10.214.130:42316]
+java.util.concurrent.RejectedExecutionException: event executor terminated
+	at io.netty.util.concurrent.SingleThreadEventExecutor.reject(SingleThreadEventExecutor.java:926)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.offerTask(SingleThreadEventExecutor.java:353)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.addTask(SingleThreadEventExecutor.java:346)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.execute(SingleThreadEventExecutor.java:828)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.execute(SingleThreadEventExecutor.java:818)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.register(AbstractChannel.java:471)
+	at io.netty.channel.SingleThreadEventLoop.register(SingleThreadEventLoop.java:87)
+	at io.netty.channel.SingleThreadEventLoop.register(SingleThreadEventLoop.java:81)
+	at io.netty.channel.MultithreadEventLoopGroup.register(MultithreadEventLoopGroup.java:86)
+	at io.netty.bootstrap.ServerBootstrap$ServerBootstrapAcceptor.channelRead(ServerBootstrap.java:218)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:357)
+	at io.netty.handler.logging.LoggingHandler.channelRead(LoggingHandler.java:271)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:357)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1410)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:919)
+	at io.netty.channel.nio.AbstractNioMessageChannel$NioMessageUnsafe.read(AbstractNioMessageChannel.java:93)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:714)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:650)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:576)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:493)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:989)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at java.lang.Thread.run(Thread.java:748)
+2021-11-02 17:29:04,973  RPCServerServerProtocolParentGroup-RPC-0 ERROR i.n.u.c.D.rejectedExecution - DefaultPromise.safeExecute() : Failed to submit a listener notification task. Event loop shut down?
+java.util.concurrent.RejectedExecutionException: event executor terminated
+	at io.netty.util.concurrent.SingleThreadEventExecutor.reject(SingleThreadEventExecutor.java:926)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.offerTask(SingleThreadEventExecutor.java:353)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.addTask(SingleThreadEventExecutor.java:346)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.execute(SingleThreadEventExecutor.java:828)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.execute(SingleThreadEventExecutor.java:818)
+	at io.netty.util.concurrent.DefaultPromise.safeExecute(DefaultPromise.java:841)
+	at io.netty.util.concurrent.DefaultPromise.notifyListeners(DefaultPromise.java:498)
+	at io.netty.util.concurrent.DefaultPromise.addListener(DefaultPromise.java:183)
+	at io.netty.channel.DefaultChannelPromise.addListener(DefaultChannelPromise.java:95)
+	at io.netty.channel.DefaultChannelPromise.addListener(DefaultChannelPromise.java:30)
+	at io.netty.bootstrap.ServerBootstrap$ServerBootstrapAcceptor.channelRead(ServerBootstrap.java:218)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:357)
+	at io.netty.handler.logging.LoggingHandler.channelRead(LoggingHandler.java:271)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:357)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1410)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:919)
+	at io.netty.channel.nio.AbstractNioMessageChannel$NioMessageUnsafe.read(AbstractNioMessageChannel.java:93)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:714)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:650)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:576)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:493)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:989)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at java.lang.Thread.run(Thread.java:748)
+2021-11-02 17:29:04,975  RPCServerServerProtocolParentGroup-RPC-0 WARN  i.n.c.AbstractChannel - AbstractChannel$AbstractUnsafe.register() : Force-closing a channel whose registration task was not accepted by an event loop: [id: 0xfb8aac24, L:/10.10.214.130:4528 - R:/10.10.214.131:37816]
+java.util.concurrent.RejectedExecutionException: event executor terminated
+	at io.netty.util.concurrent.SingleThreadEventExecutor.reject(SingleThreadEventExecutor.java:926)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.offerTask(SingleThreadEventExecutor.java:353)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.addTask(SingleThreadEventExecutor.java:346)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.execute(SingleThreadEventExecutor.java:828)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.execute(SingleThreadEventExecutor.java:818)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.register(AbstractChannel.java:471)
+	at io.netty.channel.SingleThreadEventLoop.register(SingleThreadEventLoop.java:87)
+	at io.netty.channel.SingleThreadEventLoop.register(SingleThreadEventLoop.java:81)
+	at io.netty.channel.MultithreadEventLoopGroup.register(MultithreadEventLoopGroup.java:86)
+	at io.netty.bootstrap.ServerBootstrap$ServerBootstrapAcceptor.channelRead(ServerBootstrap.java:218)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:357)
+	at io.netty.handler.logging.LoggingHandler.channelRead(LoggingHandler.java:271)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:357)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1410)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:919)
+	at io.netty.channel.nio.AbstractNioMessageChannel$NioMessageUnsafe.read(AbstractNioMessageChannel.java:93)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:714)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:650)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:576)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:493)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:989)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at java.lang.Thread.run(Thread.java:748)
+2021-11-02 17:29:04,975  RPCServerServerProtocolParentGroup-RPC-0 ERROR i.n.u.c.D.rejectedExecution - DefaultPromise.safeExecute() : Failed to submit a listener notification task. Event loop shut down?
+java.util.concurrent.RejectedExecutionException: event executor terminated
+	at io.netty.util.concurrent.SingleThreadEventExecutor.reject(SingleThreadEventExecutor.java:926)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.offerTask(SingleThreadEventExecutor.java:353)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.addTask(SingleThreadEventExecutor.java:346)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.execute(SingleThreadEventExecutor.java:828)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.execute(SingleThreadEventExecutor.java:818)
+	at io.netty.util.concurrent.DefaultPromise.safeExecute(DefaultPromise.java:841)
+	at io.netty.util.concurrent.DefaultPromise.notifyListeners(DefaultPromise.java:498)
+	at io.netty.util.concurrent.DefaultPromise.addListener(DefaultPromise.java:183)
+	at io.netty.channel.DefaultChannelPromise.addListener(DefaultChannelPromise.java:95)
+	at io.netty.channel.DefaultChannelPromise.addListener(DefaultChannelPromise.java:30)
+	at io.netty.bootstrap.ServerBootstrap$ServerBootstrapAcceptor.channelRead(ServerBootstrap.java:218)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:357)
+	at io.netty.handler.logging.LoggingHandler.channelRead(LoggingHandler.java:271)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:357)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1410)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:919)
+	at io.netty.channel.nio.AbstractNioMessageChannel$NioMessageUnsafe.read(AbstractNioMessageChannel.java:93)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:714)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:650)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:576)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:493)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:989)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at java.lang.Thread.run(Thread.java:748)
+2021-11-02 17:29:04,976  RPCServerServerProtocolParentGroup-RPC-0 WARN  i.n.c.AbstractChannel - AbstractChannel$AbstractUnsafe.register() : Force-closing a channel whose registration task was not accepted by an event loop: [id: 0x03e56682, L:/10.10.214.130:4528 - R:/10.10.214.124:57904]
+java.util.concurrent.RejectedExecutionException: event executor terminated
+	at io.netty.util.concurrent.SingleThreadEventExecutor.reject(SingleThreadEventExecutor.java:926)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.offerTask(SingleThreadEventExecutor.java:353)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.addTask(SingleThreadEventExecutor.java:346)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.execute(SingleThreadEventExecutor.java:828)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.execute(SingleThreadEventExecutor.java:818)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe.register(AbstractChannel.java:471)
+	at io.netty.channel.SingleThreadEventLoop.register(SingleThreadEventLoop.java:87)
+	at io.netty.channel.SingleThreadEventLoop.register(SingleThreadEventLoop.java:81)
+	at io.netty.channel.MultithreadEventLoopGroup.register(MultithreadEventLoopGroup.java:86)
+	at io.netty.bootstrap.ServerBootstrap$ServerBootstrapAcceptor.channelRead(ServerBootstrap.java:218)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:357)
+	at io.netty.handler.logging.LoggingHandler.channelRead(LoggingHandler.java:271)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:357)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1410)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:919)
+	at io.netty.channel.nio.AbstractNioMessageChannel$NioMessageUnsafe.read(AbstractNioMessageChannel.java:93)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:714)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:650)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:576)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:493)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:989)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at java.lang.Thread.run(Thread.java:748)
+2021-11-02 17:29:04,976  Thread-1 INFO  KERNEL.DEPLOYMENT - ServiceDeployer.stopService() : ServiceDeployer.unDeploy() : Successfully stopped the service : ZooKeeperService
+2021-11-02 17:29:04,976  RPCServerServerProtocolParentGroup-RPC-0 ERROR i.n.u.c.D.rejectedExecution - DefaultPromise.safeExecute() : Failed to submit a listener notification task. Event loop shut down?
+java.util.concurrent.RejectedExecutionException: event executor terminated
+	at io.netty.util.concurrent.SingleThreadEventExecutor.reject(SingleThreadEventExecutor.java:926)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.offerTask(SingleThreadEventExecutor.java:353)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.addTask(SingleThreadEventExecutor.java:346)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.execute(SingleThreadEventExecutor.java:828)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.execute(SingleThreadEventExecutor.java:818)
+	at io.netty.util.concurrent.DefaultPromise.safeExecute(DefaultPromise.java:841)
+	at io.netty.util.concurrent.DefaultPromise.notifyListeners(DefaultPromise.java:498)
+	at io.netty.util.concurrent.DefaultPromise.addListener(DefaultPromise.java:183)
+	at io.netty.channel.DefaultChannelPromise.addListener(DefaultChannelPromise.java:95)
+	at io.netty.channel.DefaultChannelPromise.addListener(DefaultChannelPromise.java:30)
+	at io.netty.bootstrap.ServerBootstrap$ServerBootstrapAcceptor.channelRead(ServerBootstrap.java:218)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:357)
+	at io.netty.handler.logging.LoggingHandler.channelRead(LoggingHandler.java:271)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:357)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1410)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:379)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:365)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:919)
+	at io.netty.channel.nio.AbstractNioMessageChannel$NioMessageUnsafe.read(AbstractNioMessageChannel.java:93)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:714)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:650)
+	at io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:576)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:493)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:989)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at java.lang.Thread.run(Thread.java:748)
+2021-11-02 17:29:04,976  Thread-1 INFO  KERNEL.DEPLOYMENT - ServiceDeployer.stopService() : ServiceDeployer.unDeploy() : Successfully stopped the service : MachineKeyService
